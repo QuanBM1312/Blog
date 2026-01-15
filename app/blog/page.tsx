@@ -43,7 +43,7 @@ export default function BlogIndex() {
     <main className="min-h-screen bg-background">
       <Header />
       
-      <section className="max-w-[1450px] mx-auto px-6 py-20">
+      <section className="max-w-7xl mx-auto px-6 py-20">
         <h1 className="text-4xl font-playfair font-bold text-primary mb-12 uppercase tracking-widest text-center">
           Blog Sức Khỏe
         </h1>

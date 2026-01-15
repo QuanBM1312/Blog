@@ -3,11 +3,11 @@ import { Facebook, Instagram, Youtube, MapPin, Phone, Globe, Music } from "lucid
 
 export function Footer() {
   return (
-    <footer id="footer" className="bg-[#800000] text-white py-8 px-24">
-      <div className="max-w-[1450px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-24">
+    <footer id="footer" className="bg-[#98846a] text-white py-12 px-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-24">
         {/* Column 1: Brand & Contact */}
         <div className="space-y-6">
-          <h2 className="text-2xl font-montserrat font-bold tracking-wider">QUỐC Y ĐƯỜNG</h2>
+          <h2 className="text-2xl font-montserrat font-bold tracking-wider">Hải Lĩnh Y Quán</h2>
           <div className="space-y-4 text-sm font-montserrat leading-relaxed">
             <div className="flex items-start gap-3">
               <MapPin size={18} className="mt-1 shrink-0" />
@@ -36,16 +36,16 @@ export function Footer() {
         <div className="space-y-6">
           <h2 className="text-2xl font-montserrat font-bold tracking-wider">THÔNG TIN LIÊN HỆ</h2>
           <div className="flex gap-4 mb-6">
-            <Link href="#" className="w-10 h-10 border border-white rounded-full flex items-center justify-center hover:bg-white hover:text-[#800000] transition-all">
+            <Link href="#" className="w-10 h-10 border border-white rounded-full flex items-center justify-center hover:bg-white hover:text-accent transition-all">
               <Facebook size={20} />
             </Link>
-            <Link href="#" className="w-10 h-10 border border-white rounded-full flex items-center justify-center hover:bg-white hover:text-[#800000] transition-all">
+            <Link href="#" className="w-10 h-10 border border-white rounded-full flex items-center justify-center hover:bg-white hover:text-accent transition-all">
               <Instagram size={20} />
             </Link>
-            <Link href="#" className="w-10 h-10 border border-white rounded-full flex items-center justify-center hover:bg-white hover:text-[#800000] transition-all">
+            <Link href="#" className="w-10 h-10 border border-white rounded-full flex items-center justify-center hover:bg-white hover:text-accent transition-all">
               <Youtube size={20} />
             </Link>
-            <Link href="#" className="w-10 h-10 border border-white rounded-full flex items-center justify-center hover:bg-white hover:text-[#800000] transition-all">
+            <Link href="#" className="w-10 h-10 border border-white rounded-full flex items-center justify-center hover:bg-white hover:text-accent transition-all">
               <Music size={20} />
             </Link>
           </div>

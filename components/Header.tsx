@@ -14,8 +14,8 @@ export function Header() {
   ]
 
   return (
-    <header className="border-b border-border bg-cream z-50">
-      <div className="max-w-[1450px] mx-auto px-6 py-10 flex justify-between items-center">
+    <header className="border-b border-border bg-[#eeead8] z-50">
+      <div className="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
         <Link href="/" className="text-2xl font-montserrat font-bold tracking-[0.3em] text-primary uppercase">
           Hải Lĩnh Y Quán
         </Link>
