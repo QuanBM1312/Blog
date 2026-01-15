@@ -1,5 +1,7 @@
 import Link from "next/link"
-import { ChevronDown, Facebook, Instagram, Youtube, Radio, MapPin, Phone, Globe, Music } from "lucide-react"
+import { Facebook, Instagram, Youtube, Radio } from "lucide-react"
+import { Header } from "@/components/Header"
+import { Footer } from "@/components/Footer"
 
 interface BlogPost {
   id: string
@@ -42,46 +44,28 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b bg-background border-border bg-cream z-50">
-        <div className="max-w-[1450px] mx-auto px-6 py-10 flex justify-between items-center">
-          <Link href="/" className="text-2xl font-montserrat font-bold tracking-[0.3em] text-primary uppercase">
-            Hải Lĩnh Y Quán
-          </Link>
-          <nav className="flex gap-10 text-[11px] font-montserrat font-medium tracking-[0.2em] text-primary uppercase">
-            <Link href="/blog" className="hover:text-gray-400 transition-colors">
-              Blog
-            </Link>
-            <Link href="#footer" className="hover:text-gray-400 transition-colors">
-              Về chúng tôi
-            </Link>
-            <Link href="#newsletter" className="hover:text-gray-400 transition-colors">
-              Y lý y học cổ truyền
-            </Link>
-            <Link href="#newsletter" className="flex items-center gap-1 hover:text-gray-400 transition-colors">
-              Khóa học
-            </Link>
-          </nav>
-        </div>
-      </header>
+      <Header />
 
-      {/* Hero Section */}
-      <section className="w-full bg-[#b8a69b]">
-        <img 
-          src="/Hero-Section.jpg" 
-          alt="Hero Section" 
-          className="w-full h-full object-cover"
+      {/* Introduction Section with Hero Illustration Background */}
+      <section id="intro" className="relative pb-5 overflow-hidden bg-cream min-h-[100vw] flex flex-col justify-end">
+        {/* Hero Background Illustration */}
+        <div 
+          className="absolute inset-0 z-0 pointer-events-none"
+          style={{
+            backgroundImage: "url('/Hero-Section.png')",
+            backgroundSize: '100% auto',
+            backgroundPosition: 'top center',
+            backgroundRepeat: 'no-repeat'
+          }}
         />
-      </section>
-
-      {/* Introduction Section */}
-      <section id="intro" className="bg-[#E9E5DA] py-20">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-24">
+        
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-24 relative z-10 px-6">
           {/* Left: Circular Image */}
           <div className="w-full md:w-1/2 flex justify-center">
               <img 
                 src="/infor.png" 
                 alt="Chủ nhân Hải Lĩnh Y Quán" 
-                className="w-[600px] h-[600px] object-cover rounded-full"
+                className="w-[500px] h-[500px] object-cover rounded-full"
               />
           </div>
 
@@ -95,29 +79,25 @@ export default function Home() {
               <Link href="#" className="hover:text-accent transition-colors"><Radio size={20} /></Link>
             </div>
 
-            <div className="space-y-6 text-dark">
+            <div className="space-y-4 text-dark pb-12">
               <h2 className="text-3xl font-playfair font-bold text-center mb-8">Xin Chào!</h2>
               
-              <div className="space-y-5 font-semibold text-[15px] leading-relaxed text-black">
+              <div className="space-y-3 font-semibold text-[15px] leading-relaxed text-black">
                 <p>
                   Cảm ơn bạn đã ghé thăm Hải Lĩnh Y Quán. 
                   Đây không chỉ là một không gian chăm sóc sức khỏe, mà là tâm huyết của những người đam mê sưu tầm và nghiên cứu những giá trị tinh túy của Y học Cổ truyền.
                 </p>
-                
                 <p>
                   Hải Lĩnh Y Quán ra đời như một "trạm dừng chân an yên"—nơi bạn tìm lại sự cân bằng cho cơ thể và lắng nghe nhịp điệu của chính mình sau những bộn bề cuộc sống.
                 </p>
-
                 <p>
                   Xuất phát từ niềm say mê với cây cỏ và triết lý dưỡng sinh phương Đông, Hải Lĩnh Y Quán được phát triển với mong muốn gìn giữ và chia sẻ những phương pháp chăm sóc sức khỏe thuận tự nhiên. 
                   Tại đây, chúng tôi tập trung vào Tư vấn lối sống, Liệu pháp Dưỡng sinh và sử dụng Thảo mộc lành tính để hỗ trợ nâng cao thể trạng.
                 </p>
-
                 <p>
                   Chúng tôi tin rằng, hiểu đúng về cơ thể là bước đầu tiên để sống khỏe. 
                   Mỗi lời khuyên hay liệu trình tại đây đều chứa đựng sự tận tâm, giúp bạn bồi bổ Thân - Tâm và tìm thấy sự thư thái mỗi ngày.
                 </p>
-
                 <p>
                   🌱Mời bạn kết nối: Đừng ngần ngại nhắn tin cho chúng tôi để bắt đầu hành trình lắng nghe cơ thể. Hoặc đơn giản là ghé lại Y Quán, dùng một tách trà ấm và hàn huyên đôi câu chuyện sức khỏe cùng chúng tôi. Cánh cửa nơi đây luôn rộng mở chào đón bạn!
                 </p>
@@ -183,68 +163,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer id="footer" className="bg-[#800000] text-white py-8 px-24">
-        <div className="max-w-[1450px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-24">
-          {/* Column 1: Brand & Contact */}
-          <div className="space-y-6">
-            <h2 className="text-2xl font-montserrat font-bold tracking-wider">QUỐC Y ĐƯỜNG</h2>
-            <div className="space-y-4 text-sm font-montserrat leading-relaxed">
-              <div className="flex items-start gap-3">
-                <MapPin size={18} className="mt-1 shrink-0" />
-                <p>Số 3 Ngách 262/65/22 Thôn Khoan Tế, Xã Bát Tràng, Gia Lâm, Hà Nội</p>
-              </div>
-              <div className="flex items-center gap-3">
-                <Phone size={18} className="shrink-0" />
-                <p>Hotline : 0979217119</p>
-              </div>
-              <div className="flex items-center gap-3">
-                <Globe size={18} className="shrink-0" />
-                <p>Website : Hailinhyquan.com</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Column 2: Support Info */}
-          <div className="space-y-6">
-            <h2 className="text-2xl font-montserrat font-bold tracking-wider">THÔNG TIN HỖ TRỢ</h2>
-            <div className="space-y-4 text-sm font-montserrat leading-relaxed">
-              <p>Hotline 24/7: 0979217119</p>
-            </div>
-          </div>
-
-          {/* Column 3: Social & Map */}
-          <div className="space-y-6">
-            <h2 className="text-2xl font-montserrat font-bold tracking-wider">THÔNG TIN LIÊN HỆ</h2>
-            <div className="flex gap-4 mb-6">
-              <Link href="#" className="w-10 h-10 border border-white rounded-full flex items-center justify-center hover:bg-white hover:text-[#800000] transition-all">
-                <Facebook size={20} />
-              </Link>
-              <Link href="#" className="w-10 h-10 border border-white rounded-full flex items-center justify-center hover:bg-white hover:text-[#800000] transition-all">
-                <Instagram size={20} />
-              </Link>
-              <Link href="#" className="w-10 h-10 border border-white rounded-full flex items-center justify-center hover:bg-white hover:text-[#800000] transition-all">
-                <Youtube size={20} />
-              </Link>
-              <Link href="#" className="w-10 h-10 border border-white rounded-full flex items-center justify-center hover:bg-white hover:text-[#800000] transition-all">
-                <Music size={20} />
-              </Link>
-            </div>
-            
-            <div className="w-full h-48 bg-white/10 rounded overflow-hidden">
-              {/* Placeholder for Google Map - User can replace with actual iframe */}
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.588582210996!2d105.8049103!3d21.0091219!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ac978f86f77f%3A0x633919ad778f657!2zMiBOZy4gNjggUC4gUXVhbiBOaMOibiwgVHJ1bmcgSG_DoCwgQ-G6p3UgR2nhuqV5LCBIwG4gTuG7mWksIFZpZXRuYW0!5e0!3m2!1sen!2s!4v1736915000000!5m2!1sen!2s" 
-                width="100%" 
-                height="100%" 
-                style={{ border: 0 }} 
-                allowFullScreen={true} 
-                loading="lazy" 
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </main>
   )
 }

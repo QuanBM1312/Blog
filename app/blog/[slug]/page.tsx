@@ -1,4 +1,6 @@
 import Link from "next/link"
+import { Header } from "@/components/Header"
+import { Footer } from "@/components/Footer"
 
 // Sample blog data - replace with actual database or CMS
 const blogPosts: Record<string, any> = {
@@ -68,13 +70,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
   if (!post) {
     return (
       <main className="min-h-screen bg-background">
-        <header className="border-b border-border bg-cream sticky top-0 z-50">
-          <div className="max-w-3xl mx-auto px-6 py-8">
-            <Link href="/" className="text-xl font-playfair font-normal tracking-wide text-accent">
-              Hải Lĩnh Y Quán
-            </Link>
-          </div>
-        </header>
+      <Header />
         <div className="max-w-3xl mx-auto px-6 py-24 text-center">
           <h1 className="text-4xl font-playfair text-accent mb-4">Bài viết không tìm thấy</h1>
           <Link href="/" className="text-primary hover:text-accent transition-colors">
@@ -88,13 +84,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
   return (
     <main className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b border-border bg-cream sticky top-0 z-50">
-        <div className="max-w-3xl mx-auto px-6 py-8">
-          <Link href="/" className="text-xl font-playfair font-normal tracking-wide text-accent">
-            Hải Lĩnh Y Quán
-          </Link>
-        </div>
-      </header>
+      <Header />
 
       {/* Article */}
       <article className="max-w-3xl mx-auto px-6 py-16">
@@ -141,18 +131,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
       </article>
 
       {/* Footer */}
-      <footer className="border-t border-border bg-card mt-24">
-        <div className="max-w-3xl mx-auto px-6 py-16 text-center">
-          <p className="font-montserrat text-muted-foreground mb-6">
-            Liên hệ:{" "}
-            <a href="tel:0979217119" className="text-accent hover:text-primary transition-colors">
-              0979 217 119
-            </a>{" "}
-            (Phone/Zalo)
-          </p>
-          <p className="font-montserrat text-xs text-muted-foreground">Thôn Khoan Tế, Bát Tràng, Gia Lâm, Hà Nội</p>
-        </div>
-      </footer>
+      <Footer />
     </main>
   )
 }
