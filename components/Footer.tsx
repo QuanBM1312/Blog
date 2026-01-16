@@ -17,10 +17,10 @@ export function Footer() {
                 />
               </div>
               <div>
-                <span className="block text-2xl md:text-3xl font-playfair font-bold tracking-[0.2em] text-accent uppercase">
+                <span className="block text-2xl md:text-3xl font-playfair font-bold tracking-[0.2em] text-primary-foreground uppercase">
                   Hải Lĩnh
                 </span>
-                <span className="block text-sm md:text-base font-montserrat tracking-[0.4em] text-accent/80 uppercase">
+                <span className="block text-sm md:text-base font-montserrat tracking-[0.4em] text-primary-foreground/70 uppercase">
                   Y Quán
                 </span>
               </div>

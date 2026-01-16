@@ -80,7 +80,7 @@ export default function Home() {
             </div>
 
             <div className="space-y-4 text-dark pb-12">
-              <h2 className="text-3xl font-playfair font-bold text-center mb-8">Xin Chào!</h2>
+              <h2 className="text-3xl font-playfair font-bold text-left mb-8">Xin Chào!</h2>
               
               <div className="space-y-3 font-semibold text-[15px] leading-relaxed text-black">
                 <p>
@@ -106,54 +106,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Blog/Services Section - Modern Zen Grid */}
-      {/* <section id="blog" className="py-24 px-6 bg-cream/10">
-        <div className="max-w-7xl mx-auto space-y-16">
-          <div className="text-center space-y-4">
-            <h2 className="text-3xl md:text-4xl font-playfair font-bold text-primary tracking-widest uppercase">
-              BÀI VIẾT & DƯỠNG SINH
-            </h2>
-            <div className="w-20 h-[2px] bg-accent mx-auto"></div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {blogPosts.map((post) => (
-              <div 
-                key={post.id} 
-                className="bg-white rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden group border border-primary/5 flex flex-col h-full"
-              >
-                <div className="p-10 space-y-6 flex flex-col h-full">
-                  <div className="space-y-4 flex-grow">
-                    <span className="text-[10px] font-montserrat font-bold tracking-[0.2em] text-accent uppercase bg-accent/5 px-3 py-1 rounded-full">
-                      {post.category}
-                    </span>
-                    <h3 className="text-xl md:text-2xl font-playfair font-bold text-primary group-hover:text-accent transition-colors leading-tight">
-                      {post.title}
-                    </h3>
-                    <p className="text-primary/60 text-sm font-montserrat leading-relaxed line-clamp-3">
-                      {post.excerpt}
-                    </p>
-                  </div>
-                  
-                  <div className="pt-8 border-t border-primary/5 flex justify-between items-center mt-auto">
-                    <span className="text-[11px] font-montserrat text-primary/40 uppercase tracking-wider">
-                      {post.date}
-                    </span>
-                    <Link 
-                      href={`/blog/${post.slug}`} 
-                      className="text-[12px] font-montserrat font-bold text-primary hover:text-accent transition-colors flex items-center gap-2 group/link"
-                    >
-                      XEM THÊM 
-                      <span className="transition-transform group-hover/link:translate-x-1">→</span>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
 
       {/* Newsletter Section - Refactored Modern Zen Layout */}
       <section id="newsletter" className="bg-background py-32 px-6 overflow-hidden">

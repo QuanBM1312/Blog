@@ -8,7 +8,7 @@ export function Header() {
 
   const navLinks = [
     { href: "/blog", label: "Blog" },
-    { href: "/services", label: "Về chúng tôi" },
+    { href: "#footer", label: "Về chúng tôi" },
     { href: "/shop", label: "Khóa học" },
   ]
 
@@ -17,13 +17,11 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo - Top Left Align */}
         <Link href="/" className="flex items-center gap-4 group">
-          <div className="relative w-12 h-12 md:w-16 md:h-16 overflow-hidden rounded-sm shadow-sm group-hover:shadow-md transition-shadow">
-            <img 
-              src="/logo.png" 
-              alt="Hải Lĩnh Y Quán Logo" 
-              className="w-full h-full object-cover"
-            />
-          </div>
+          <img 
+            src="/logo.png" 
+            alt="Hải Lĩnh Y Quán Logo" 
+            className="w-[8%] h-[8%] object-cover"
+          />
           <div className="flex flex-col">
             <span className="text-xl md:text-2xl font-playfair font-bold tracking-[0.1em] text-primary uppercase leading-tight">
               Hải Lĩnh
