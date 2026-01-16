@@ -8,25 +8,41 @@ export function Header() {
 
   const navLinks = [
     { href: "/blog", label: "Blog" },
-    { href: "/#footer", label: "Về chúng tôi" },
-    { href: "/podcast", label: "Y lý y học cổ truyền" },
+    { href: "/services", label: "Về chúng tôi" },
     { href: "/shop", label: "Khóa học" },
   ]
 
   return (
-    <header className="border-b border-border bg-[#eeead8] z-50">
-      <div className="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-montserrat font-bold tracking-[0.3em] text-primary uppercase">
-          Hải Lĩnh Y Quán
+    <header className="border-b border-border bg-background sticky top-0 z-50 transition-all duration-300">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        {/* Logo - Top Left Align */}
+        <Link href="/" className="flex items-center gap-4 group">
+          <div className="relative w-12 h-12 md:w-16 md:h-16 overflow-hidden rounded-sm shadow-sm group-hover:shadow-md transition-shadow">
+            <img 
+              src="/logo.png" 
+              alt="Hải Lĩnh Y Quán Logo" 
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="flex flex-col">
+            <span className="text-xl md:text-2xl font-playfair font-bold tracking-[0.1em] text-primary uppercase leading-tight">
+              Hải Lĩnh
+            </span>
+            <span className="text-[10px] md:text-xs font-montserrat tracking-[0.3em] text-primary/70 uppercase">
+              Y Quán
+            </span>
+          </div>
         </Link>
-        <nav className="flex gap-10 text-[11px] font-montserrat font-medium tracking-[0.2em] text-primary uppercase">
+        
+        {/* Navigation */}
+        <nav className="flex gap-8 md:gap-12 text-[12px] font-montserrat font-medium tracking-[0.2em] text-primary uppercase">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               className={`${
-                pathname === link.href ? "text-gray-400" : "hover:text-gray-400"
-              } transition-colors`}
+                pathname === link.href ? "text-accent" : "hover:text-accent"
+              } transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-accent after:transition-all hover:after:w-full`}
             >
               {link.label}
             </Link>

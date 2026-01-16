@@ -70,7 +70,7 @@ export default function Home() {
           </div>
 
           {/* Right: Text Content */}
-          <div className="w-full md:w-1/2 flex flex-col relative">
+          <div className="w-full md:w-1/2 flex flex-col  relative">
             {/* Social Icons - Top Right */}
             <div className="absolute -top-10 right-0 flex gap-4 text-primary bg-cream/80 p-2 rounded-lg">
               <Link href="#" className="hover:text-accent transition-colors"><Facebook size={20} /></Link>
@@ -107,57 +107,95 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Newsletter Section */}
-      <section id="newsletter" className="bg-white py-24 px-6 border-b border-border">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16">
-          {/* Left Side: Info */}
-          <div className="w-full md:w-1/2 text-center space-y-8">
-            <div className="space-y-2">
-              <h3 className="text-sm font-montserrat uppercase tracking-[0.4em]">Bản tin</h3>
-              <h2 className="text-3xl font-playfair font-normal">"Vui khỏe cùng Hải Lĩnh Y Quán"</h2>
-            </div>
-            
-            <div className="w-1/2 h-[1px] bg-black mx-auto"></div>
-            
-            <div className="space-y-4 font-montserrat text-black">
-              <p className="leading-relaxed text-lg">
-                Bản tin sức khỏe của Hải Lĩnh Y Quán- nơi chia sẻ kiến thức, công cụ, lời khuyên hữu ích cho sức khỏe thân tâm. Sống thuận tự nhiên cùng Hải Lĩnh Y Quán
-              </p>
+      {/* Blog/Services Section - Modern Zen Grid */}
+      {/* <section id="blog" className="py-24 px-6 bg-cream/10">
+        <div className="max-w-7xl mx-auto space-y-16">
+          <div className="text-center space-y-4">
+            <h2 className="text-3xl md:text-4xl font-playfair font-bold text-primary tracking-widest uppercase">
+              BÀI VIẾT & DƯỠNG SINH
+            </h2>
+            <div className="w-20 h-[2px] bg-accent mx-auto"></div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            {blogPosts.map((post) => (
+              <div 
+                key={post.id} 
+                className="bg-white rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden group border border-primary/5 flex flex-col h-full"
+              >
+                <div className="p-10 space-y-6 flex flex-col h-full">
+                  <div className="space-y-4 flex-grow">
+                    <span className="text-[10px] font-montserrat font-bold tracking-[0.2em] text-accent uppercase bg-accent/5 px-3 py-1 rounded-full">
+                      {post.category}
+                    </span>
+                    <h3 className="text-xl md:text-2xl font-playfair font-bold text-primary group-hover:text-accent transition-colors leading-tight">
+                      {post.title}
+                    </h3>
+                    <p className="text-primary/60 text-sm font-montserrat leading-relaxed line-clamp-3">
+                      {post.excerpt}
+                    </p>
+                  </div>
+                  
+                  <div className="pt-8 border-t border-primary/5 flex justify-between items-center mt-auto">
+                    <span className="text-[11px] font-montserrat text-primary/40 uppercase tracking-wider">
+                      {post.date}
+                    </span>
+                    <Link 
+                      href={`/blog/${post.slug}`} 
+                      className="text-[12px] font-montserrat font-bold text-primary hover:text-accent transition-colors flex items-center gap-2 group/link"
+                    >
+                      XEM THÊM 
+                      <span className="transition-transform group-hover/link:translate-x-1">→</span>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section> */}
+
+      {/* Newsletter Section - Refactored Modern Zen Layout */}
+      <section id="newsletter" className="bg-background py-32 px-6 overflow-hidden">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-20">
+          {/* Illustration Side */}
+          <div className="w-full md:w-1/2 flex justify-center order-2 md:order-1">
+            <div className="relative group">
+              <img 
+                src="/form.webp" 
+                alt="Y Học Cổ Truyền" 
+                className="w-full max-w-full h-auto object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-500"
+              />
+              <div className="absolute -inset-4 border border-primary/5 rounded-full -z-10 animate-pulse"></div>
+              <div className="absolute -inset-10 border border-primary/5 rounded-full -z-10 animate-pulse delay-700"></div>
             </div>
           </div>
 
-          {/* Right Side: Signup Card */}
-          <div className="w-full md:w-1/2 text-center">
-            <div className="bg-white border border-black shadow-sm">
-              <div className="mb-10 flex justify-center">
-                <img 
-                  src="/form.webp" 
-                  alt="Newsletter Illustration" 
-                  className="w-[150%] h-auto opacity-90"
-                />
-              </div>
-              
-              <div className="space-y-6 p-6 ">
-                <p className="font-montserrat text-[15px] leading-relaxed text-black text-center">
-                  Hãy đăng ký email của bạn để nhận bản tin miễn phí 
-                  <strong className="text-black"> "Vui khỏe cùng Hải Lĩnh Y Quán" </strong> ngay tuần này:
-                </p>
-                
-                <form className="space-y-4">
-                  <input 
-                    type="email" 
-                    placeholder="Email" 
-                    className="w-full px-4 py-4 border border-border focus:outline-none focus:border-primary transition-colors font-montserrat"
-                  />
-                  <button 
-                    type="submit" 
-                    className="w-full bg-black text-white py-4 font-montserrat font-bold tracking-[0.2em] transition-transform active:scale-[0.98]"
-                  >
-                    ĐĂNG KÝ
-                  </button>
-                </form>
-              </div>
+          {/* Content Side */}
+          <div className="w-full md:w-1/2 space-y-12 order-1 md:order-2">
+            <div className="space-y-6">
+              <h2 className="text-4xl md:text-5xl font-playfair font-bold text-primary tracking-wide">
+                Y HỌC CỔ TRUYỀN
+              </h2>
+              <p className="font-montserrat text-lg text-primary/70 leading-relaxed max-w-lg">
+                Cùng Hải Lĩnh Y Quán lắng nghe cơ thể và phòng bệnh từ gốc. 
+                Đăng ký để nhận các bài viết dưỡng sinh chuyên sâu cùng ưu đãi trị liệu đặc quyền gửi riêng cho bạn.
+              </p>
             </div>
+            
+            <form className="flex flex-col sm:flex-row gap-4 max-w-md">
+              <input 
+                type="email" 
+                placeholder="Nhập email của bạn" 
+                className="flex-grow px-6 py-4 bg-white border border-border focus:outline-none focus:border-primary transition-all font-montserrat text-primary"
+              />
+              <button 
+                type="submit" 
+                className="bg-primary text-primary-foreground px-10 py-4 font-montserrat font-bold tracking-[0.2em] transition-all hover:bg-accent hover:scale-[1.02] active:scale-[0.98] shadow-md hover:shadow-xl"
+              >
+                ĐĂNG KÝ
+              </button>
+            </form>
           </div>
         </div>
       </section>
