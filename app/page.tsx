@@ -58,6 +58,18 @@ export default function Home() {
             backgroundRepeat: 'no-repeat'
           }}
         />
+
+        {/* Slogan Overlay */}
+        <div className="absolute inset-0 z-0 flex items-center  pointer-events-none pb-50">
+           <div className="text-left space-y-2 opacity-90 ml-10">
+            <h1 className="text-4xl md:text-6xl font-playfair font-bold text-[#785a28] drop-shadow-sm tracking-wide">
+              Trân trọng từng ngọn cỏ
+            </h1>
+            <h2 className="text-4xl md:text-6xl font-playfair font-bold text-[#785a28] drop-shadow-sm tracking-wide ml-70">
+              giữ gìn một nền y
+            </h2>
+           </div>
+        </div>
         
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-24 relative z-10 px-6">
           {/* Left: Circular Image */}
@@ -82,7 +94,7 @@ export default function Home() {
             <div className="space-y-4 text-dark pb-12">
               <h2 className="text-3xl font-playfair font-bold text-left mb-8">Xin Chào!</h2>
               
-              <div className="space-y-3 font-semibold text-[15px] leading-relaxed text-black">
+              <div className="space-y-3 font-semibold font-montserrat text-[15px] leading-relaxed text-black">
                 <p>
                   Cảm ơn bạn đã ghé thăm Hải Lĩnh Y Quán. 
                   Đây không chỉ là một không gian chăm sóc sức khỏe, mà là tâm huyết của những người đam mê sưu tầm và nghiên cứu những giá trị tinh túy của Y học Cổ truyền.
@@ -125,11 +137,14 @@ export default function Home() {
 
           {/* Content Side */}
           <div className="w-full md:w-1/2 space-y-12 order-1 md:order-2">
-            <div className="space-y-6">
-              <h2 className="text-4xl md:text-5xl font-playfair font-bold text-primary tracking-wide">
+            <div className="space-y-4">
+              <p className="font-montserrat font-medium tracking-[0.2em] text-primary/70 uppercase">
+                Bản tin
+              </p>
+              <h2 className="text-4xl md:text-5xl font-playfair font-normal text-primary tracking-wide">
                 Y HỌC CỔ TRUYỀN
               </h2>
-              <p className="font-montserrat text-lg text-primary/70 leading-relaxed max-w-lg">
+              <p className="font-montserrat text-lg text-primary leading-relaxed max-w-lg">
                 Cùng Hải Lĩnh Y Quán lắng nghe cơ thể và phòng bệnh từ gốc. 
                 Đăng ký để nhận các bài viết dưỡng sinh chuyên sâu cùng ưu đãi trị liệu đặc quyền gửi riêng cho bạn.
               </p>

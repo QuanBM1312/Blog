@@ -44,7 +44,7 @@ export default function BlogIndex() {
       <Header />
       
       <section className="max-w-7xl mx-auto px-6 py-20">
-        <h1 className="text-4xl font-playfair font-bold text-primary mb-12 uppercase tracking-widest text-center">
+        <h1 className="text-4xl font-playfair font-normal text-primary mb-12 uppercase tracking-widest text-center">
           Blog Sức Khỏe
         </h1>
         
@@ -64,7 +64,7 @@ export default function BlogIndex() {
                 </span>
               </div>
               
-              <h2 className="text-2xl font-playfair font-bold text-primary mb-4 group-hover:text-accent transition-colors">
+              <h2 className="text-2xl font-playfair font-normal text-primary mb-4 group-hover:text-accent transition-colors">
                 {post.title}
               </h2>
               

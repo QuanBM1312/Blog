@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Playfair_Display, Montserrat } from "next/font/google"
+import { Playfair_Display, Montserrat, Dancing_Script } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
@@ -12,6 +12,11 @@ const playfairDisplay = Playfair_Display({
 const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
+})
+
+const dancingScript = Dancing_Script({
+  subsets: ["latin"],
+  variable: "--font-dancing",
 })
 
 export const metadata: Metadata = {
@@ -30,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${playfairDisplay.variable} ${montserrat.variable}`}>
+    <html lang="en" className={`${playfairDisplay.variable} ${montserrat.variable} ${dancingScript.variable}`}>
       <body className={`font-montserrat antialiased bg-cream text-dark`}>
         {children}
         <Analytics />

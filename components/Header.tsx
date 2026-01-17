@@ -14,26 +14,21 @@ export function Header() {
 
   return (
     <header className="border-b border-border bg-background sticky top-0 z-50 transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        {/* Logo - Top Left Align */}
+      <div className="max-w-7xl mx-auto px-6 py-8 flex justify-between items-center">
+        {/* Logo - Align with Brand Name as a solid block */}
         <Link href="/" className="flex items-center gap-4 group">
           <img 
             src="/logo.png" 
             alt="Hải Lĩnh Y Quán Logo" 
-            className="w-[8%] h-[8%] object-cover"
+            className="h-20 w-auto object-contain"
           />
-          <div className="flex flex-col">
-            <span className="text-xl md:text-2xl font-playfair font-bold tracking-[0.1em] text-primary uppercase leading-tight">
-              Hải Lĩnh
-            </span>
-            <span className="text-[10px] md:text-xs font-montserrat tracking-[0.3em] text-primary/70 uppercase">
-              Y Quán
-            </span>
-          </div>
+          <h1 className="text-xl md:text-[30px] font-playfair font-bold tracking-wide text-primary uppercase whitespace-nowrap">
+            Hải Lĩnh Y Quán
+          </h1>
         </Link>
         
         {/* Navigation */}
-        <nav className="flex gap-8 md:gap-12 text-[12px] font-montserrat font-medium tracking-[0.2em] text-primary uppercase">
+        <nav className="flex gap-8 md:gap-12 text-[18px] font-montserrat font-bold tracking-[0.2em] text-primary uppercase">
           {navLinks.map((link) => (
             <Link
               key={link.href}
