@@ -13,7 +13,7 @@ export function Footer() {
               alt="Hải Lĩnh Y Quán Logo" 
               className="h-20 w-auto object-contain"
             />
-            <span className="text-xl md:text-[24px] font-playfair font-normal tracking-[0.15em] text-primary-foreground uppercase whitespace-nowrap">
+            <span className="text-xl md:text-[24px] font-playfair font-normal tracking-[0.15em] text-primary-foreground uppercase whitespace-nowrap translate-y-1">
               Hải Lĩnh Y Quán
             </span>
           </Link>

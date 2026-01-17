@@ -42,12 +42,12 @@ const blogPosts: BlogPost[] = [
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen">
       {/* Header */}
       <Header />
 
       {/* Introduction Section with Hero Illustration Background */}
-      <section id="intro" className="relative pb-5 overflow-hidden bg-cream min-h-[100vw] flex flex-col justify-end">
+      <section id="banner" className="relative mx-12 overflow-hidden bg-background min-h-[80vh] flex flex-col justify-end">
         {/* Hero Background Illustration */}
         <div 
           className="absolute inset-0 z-0 pointer-events-none"
@@ -58,31 +58,43 @@ export default function Home() {
             backgroundRepeat: 'no-repeat'
           }}
         />
-
-        {/* Slogan Overlay */}
-        <div className="absolute inset-0 z-0 flex items-center  pointer-events-none pb-50">
-           <div className="text-left space-y-2 opacity-90 ml-10">
-            <h1 className="text-4xl md:text-6xl font-playfair font-bold text-[#785a28] drop-shadow-sm tracking-wide">
+        <div className="absolute inset-0 z-0 flex items-center pointer-events-none mt-90">
+           <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-white/90 via-white/50 to-transparent z-[-1]" />
+           <div className="text-left space-y-2 opacity-90 ml-10 relative z-10 block">
+            <h1 className="text-6xl max-md:text-2xl font-playfair font-bold text-[#064E3B] drop-shadow-sm tracking-wide">
               Trân trọng từng ngọn cỏ
             </h1>
-            <h2 className="text-4xl md:text-6xl font-playfair font-bold text-[#785a28] drop-shadow-sm tracking-wide ml-70">
+            <h2 className="text-6xl max-md:text-2xl font-playfair font-bold text-[#064E3B] drop-shadow-sm tracking-wide ml-70">
               giữ gìn một nền y
             </h2>
            </div>
         </div>
-        
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-24 relative z-10 px-6">
+      </section>
+
+      <section id="intro" className="relative overflow-hidden mx-12 pt-20 pb-10">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 z-0 pointer-events-none opacity-15"
+          style={{
+            backgroundImage: "url('/Intro-bg.png')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        />
+
+        <div className="max-w-7xl mx-auto flex flex-row items-center gap-12 md:gap-24 relative z-10 px-6">
           {/* Left: Circular Image */}
-          <div className="w-full md:w-1/2 flex justify-center">
+          <div className="w-1/2 flex justify-center">
               <img 
                 src="/infor.png" 
                 alt="Chủ nhân Hải Lĩnh Y Quán" 
-                className="w-[500px] h-[500px] object-cover rounded-full"
+                className="w-[500px] h-[500px] max-md:w-[100px] max-md:h-[100px] object-cover rounded-full"
               />
           </div>
 
           {/* Right: Text Content */}
-          <div className="w-full md:w-1/2 flex flex-col  relative">
+          <div className="w-1/2 flex flex-col relative">
             {/* Social Icons - Top Right */}
             <div className="absolute -top-10 right-0 flex gap-4 text-primary bg-cream/80 p-2 rounded-lg">
               <Link href="#" className="hover:text-accent transition-colors"><Facebook size={20} /></Link>
@@ -91,10 +103,10 @@ export default function Home() {
               <Link href="#" className="hover:text-accent transition-colors"><Radio size={20} /></Link>
             </div>
 
-            <div className="space-y-4 text-dark pb-12">
-              <h2 className="text-3xl font-playfair font-bold text-left mb-8">Xin Chào!</h2>
+            <div className="space-y-4 text-[#064E3B] pb-12">
+              <h2 className="text-3xl max-md:text-sm font-playfair font-bold text-left mb-8">Xin Chào!</h2>
               
-              <div className="space-y-3 font-semibold font-montserrat text-[15px] leading-relaxed text-black">
+              <div className="space-y-3 font-semibold font-montserrat text-[15px] max-md:text-[5px] leading-relaxed text-#064E3B">
                 <p>
                   Cảm ơn bạn đã ghé thăm Hải Lĩnh Y Quán. 
                   Đây không chỉ là một không gian chăm sóc sức khỏe, mà là tâm huyết của những người đam mê sưu tầm và nghiên cứu những giá trị tinh túy của Y học Cổ truyền.
@@ -119,50 +131,58 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Newsletter Section - Refactored Modern Zen Layout */}
-      <section id="newsletter" className="bg-background py-32 px-6 overflow-hidden">
+      <section id="newsletter" className="bg-background py-10 mx-12 overflow-hidden">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-20">
-          {/* Illustration Side */}
-          <div className="w-full md:w-1/2 flex justify-center order-2 md:order-1">
-            <div className="relative group">
-              <img 
-                src="/form.webp" 
-                alt="Y Học Cổ Truyền" 
-                className="w-full max-w-full h-auto object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-500"
-              />
-              <div className="absolute -inset-4 border border-primary/5 rounded-full -z-10 animate-pulse"></div>
-              <div className="absolute -inset-10 border border-primary/5 rounded-full -z-10 animate-pulse delay-700"></div>
-            </div>
-          </div>
-
-          {/* Content Side */}
-          <div className="w-full md:w-1/2 space-y-12 order-1 md:order-2">
-            <div className="space-y-4">
-              <p className="font-montserrat font-medium tracking-[0.2em] text-primary/70 uppercase">
-                Bản tin
-              </p>
-              <h2 className="text-4xl md:text-5xl font-playfair font-normal text-primary tracking-wide">
-                Y HỌC CỔ TRUYỀN
-              </h2>
-              <p className="font-montserrat text-lg text-primary leading-relaxed max-w-lg">
-                Cùng Hải Lĩnh Y Quán lắng nghe cơ thể và phòng bệnh từ gốc. 
-                Đăng ký để nhận các bài viết dưỡng sinh chuyên sâu cùng ưu đãi trị liệu đặc quyền gửi riêng cho bạn.
-              </p>
+          {/* Left Side: Info */}
+          <div className="w-full md:w-1/2 text-center space-y-8">
+            <div className="space-y-2">
+              <h3 className="font-montserrat font-medium tracking-[0.2em] text-primary/70 uppercase">Bản tin</h3>
+              <h2 className="text-4xl md:text-5xl font-playfair font-normal text-primary tracking-wide">Y HỌC CỔ TRUYỀN</h2>
             </div>
             
-            <form className="flex flex-col sm:flex-row gap-4 max-w-md">
-              <input 
-                type="email" 
-                placeholder="Nhập email của bạn" 
-                className="flex-grow px-6 py-4 bg-white border border-border focus:outline-none focus:border-primary transition-all font-montserrat text-primary"
-              />
-              <button 
-                type="submit" 
-                className="bg-primary text-primary-foreground px-10 py-4 font-montserrat font-bold tracking-[0.2em] transition-all hover:bg-accent hover:scale-[1.02] active:scale-[0.98] shadow-md hover:shadow-xl"
-              >
-                ĐĂNG KÝ
-              </button>
-            </form>
+            <div className="w-1/2 h-[1px] bg-black mx-auto"></div>
+            
+            <div className="space-y-4">
+              <p className="leading-relaxed text-lg font-montserrat text-primary">
+                Cùng Hải Lĩnh Y Quán lắng nghe cơ thể và phòng bệnh từ gốc. 
+                Đăng ký để nhận các bài viết dưỡng sinh chuyên sâu cùng ưu đãi đặc quyền gửi riêng cho bạn.
+              </p>
+            </div>
+          </div>
+          {/* Right Side: Signup Card */}
+          <div className="w-full md:w-1/2 text-center">
+            <div className="bg-white border border-black shadow-sm">
+              <div className="mb-10 flex justify-center">
+                <img 
+                  src="/form.webp" 
+                  alt="Newsletter Illustration" 
+                  className="w-[150%] h-auto opacity-90"
+                />
+              </div>
+              
+              <div className="space-y-6 p-6 ">
+                <p className="font-montserrat text-[15px] leading-relaxed text-black text-center">
+                  Hãy đăng ký email của bạn để nhận bản tin miễn phí 
+                  <br />
+                  <strong className="text-black"> "Y HỌC CỔ TRUYỀN" </strong> 
+                  ngay tuần này:
+                </p>
+                
+                <form className="space-y-4">
+                  <input 
+                    type="email" 
+                    placeholder="Nhập email của bạn" 
+                    className="w-full px-4 py-4 border border-border focus:outline-none focus:border-primary transition-colors font-montserrat"
+                  />
+                  <button 
+                    type="submit" 
+                    className="w-full bg-primary text-white py-4 font-montserrat font-bold tracking-[0.2em] transition-transform active:scale-[0.98]"
+                  >
+                    ĐĂNG KÝ
+                  </button>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
       </section>
