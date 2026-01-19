@@ -42,13 +42,14 @@ const blogPosts: BlogPost[] = [
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      <section id="banner" className="relative overflow-hidden xl:min-h-screen h-full bg-background flex flex-col" style={{ backgroundColor: '#F2EDE3' }}>
-        <Header />
+    <>
+      <Header />
+      <main className="min-h-screen">
+        <section id="banner" className="relative overflow-hidden xl:min-h-screen h-full bg-background flex flex-col pt-[76px] xl:pt-[92px]" style={{ backgroundColor: '#F2EDE3' }}>
         <img 
           src="/Hero-Section.jpg"
           alt="Hero Section"
-          className="flex-1 h-full w-full md:w-auto object-contain object-center md:mx-auto"
+          className="flex-1 h-full w-full xl:w-auto object-contain object-center md:mx-auto"
         />
       </section>
 
@@ -120,10 +121,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="newsletter" className="bg-background xl:min-h-screen xl:py-32 px-6 overflow-hidden">
+      <section id="newsletter" className="bg-background xl:min-h-screen py-10 xl:py-32 px-6 overflow-hidden">
         <div className="max-w-screen mx-auto flex flex-col md:flex-row items-center gap-20">
           {/* Illustration Side */}
-          <div className="w-full md:w-1/2 flex justify-center order-2 md:order-1">
+          <div className="w-full md:w-1/2 flex justify-center order-1 md:order-2">
             <div className="relative group">
               <img 
                 src="/form.webp" 
@@ -134,11 +135,10 @@ export default function Home() {
               <div className="absolute -inset-10 border border-primary/5 rounded-full -z-10 animate-pulse delay-700"></div>
             </div>
           </div>
-              
-              {/* Content Side */}
-          <div className="w-full md:w-1/2 space-y-12 order-1 md:order-2">
+          {/* Content Side */}
+          <div className="w-full xl:w-1/2 space-y-12 order-1 items-center md:order-2 max-xl:mx-2">
             <div className="space-y-6">
-              <h2 className="text-4xl md:text-5xl font-playfair font-bold text-primary tracking-wide">
+              <h2 className="text-4xl xl:text-5xl font-playfair font-bold text-primary tracking-wide">
                 Y HỌC CỔ TRUYỀN
               </h2>
               <p className="font-montserrat text-lg text-primary/70 leading-relaxed max-w-lg">
@@ -147,7 +147,7 @@ export default function Home() {
               </p>
             </div>
             
-            <form className="flex flex-col sm:flex-row gap-4 max-w-md">
+            <form className="flex flex-col sm:flex-row gap-4 max-w-md ">
               <input 
                 type="email" 
                 placeholder="Nhập email của bạn" 
@@ -155,7 +155,7 @@ export default function Home() {
               />
               <button 
                 type="submit" 
-                className="bg-primary text-primary-foreground px-10 py-4 font-montserrat font-bold tracking-[0.2em] transition-all hover:bg-accent hover:scale-[1.02] active:scale-[0.98] shadow-md hover:shadow-xl"
+                className="px-8 py-4 bg-primary text-primary-foreground font-montserrat font-bold tracking-[0.2em] transition-all hover:bg-accent hover:scale-[1.02] active:scale-[0.98] shadow-md hover:shadow-xl whitespace-nowrap"
               >
                 ĐĂNG KÝ
               </button>
@@ -168,5 +168,6 @@ export default function Home() {
       {/* Footer */}
       <Footer />
     </main>
+    </>
   )
 }

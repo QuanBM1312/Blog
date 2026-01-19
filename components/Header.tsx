@@ -16,22 +16,22 @@ export function Header() {
   ]
 
   return (
-    <header className="border-b border-border bg-background z-50 transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center bg-background relative z-50">
+    <header className="fixed top-0 left-0 right-0 w-full border-b border-border bg-background z-[9999] transition-all duration-300">
+      <div className="xl:max-w-7xl max-w-screen mx-auto px-6 py-4 flex justify-between items-center bg-background relative">
         {/* Logo - Align with Brand Name as a solid block */}
         <Link href="/" className="flex items-center gap-2 group">
           <img 
             src="/logo.png" 
             alt="Hải Lĩnh Y Quán Logo" 
-            className="h-12 w-auto md:h-16 object-contain"
+            className="h-12 w-auto xl:h-16 object-contain"
           />
-          <h1 className="text-xl md:text-[30px] font-playfair font-bold tracking-wide text-primary uppercase whitespace-nowrap translate-y-1">
+          <h1 className="text-xl xl:text-[30px] font-playfair font-bold tracking-wide text-primary uppercase whitespace-nowrap translate-y-1">
             Hải Lĩnh Y Quán
           </h1>
         </Link>
         
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex gap-12 text-[18px] font-montserrat font-bold tracking-[0.2em] text-primary uppercase">
+        <nav className="hidden xl:flex gap-12 text-[18px] font-montserrat font-bold tracking-[0.2em] text-primary uppercase">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -47,7 +47,7 @@ export function Header() {
 
         {/* Mobile Menu Button */}
         <button 
-          className="md:hidden p-2 text-primary"
+          className="xl:hidden p-2 text-primary"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -55,7 +55,7 @@ export function Header() {
       </div>
 
       {/* Mobile Dropdown Menu */}
-      <div className={`md:hidden absolute top-full left-0 w-full bg-background border-b border-border transition-all duration-300 ease-in-out ${
+      <div className={`xl:hidden absolute z-[100] top-full left-0 w-full bg-background border-b border-border transition-all duration-300 ease-in-out ${
         isMobileMenuOpen ? "opacity-100 translate-y-0 visible shadow-lg" : "opacity-0 -translate-y-4 invisible"
       }`}>
         <nav className="flex flex-col py-6 px-6 gap-6 text-[16px] font-montserrat font-bold tracking-[0.2em] text-primary uppercase items-center">
