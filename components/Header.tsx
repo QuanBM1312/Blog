@@ -17,13 +17,13 @@ export function Header() {
 
   return (
     <header className="border-b border-border bg-background z-50 transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-6 py-8 flex justify-between items-center bg-background relative z-50">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center bg-background relative z-50">
         {/* Logo - Align with Brand Name as a solid block */}
         <Link href="/" className="flex items-center gap-2 group">
           <img 
             src="/logo.png" 
             alt="Hải Lĩnh Y Quán Logo" 
-            className="h-16 w-auto md:h-20 object-contain"
+            className="h-12 w-auto md:h-16 object-contain"
           />
           <h1 className="text-xl md:text-[30px] font-playfair font-bold tracking-wide text-primary uppercase whitespace-nowrap translate-y-1">
             Hải Lĩnh Y Quán
