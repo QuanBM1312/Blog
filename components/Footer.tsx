@@ -7,7 +7,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16">
         {/* Column 1: Brand & Contact */}
         <div className="space-y-4">
-          <Link href="/" className="flex items-center gap-4 group mb-4">
+          <Link href="/" className="flex items-center gap-2 group mb-4">
             <img 
               src="/logo.png" 
               alt="Hải Lĩnh Y Quán Logo" 

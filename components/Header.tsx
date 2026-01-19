@@ -19,7 +19,7 @@ export function Header() {
     <header className="border-b border-border bg-background z-50 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-6 py-8 flex justify-between items-center bg-background relative z-50">
         {/* Logo - Align with Brand Name as a solid block */}
-        <Link href="/" className="flex items-center gap-4 group">
+        <Link href="/" className="flex items-center gap-2 group">
           <img 
             src="/logo.png" 
             alt="Hải Lĩnh Y Quán Logo" 

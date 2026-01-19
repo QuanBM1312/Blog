@@ -47,31 +47,20 @@ export default function Home() {
       <Header />
 
       {/* Introduction Section with Hero Illustration Background */}
-      <section id="banner" className="relative mx-12 overflow-hidden bg-background min-h-[80vh] flex flex-col justify-end">
+      <section id="banner" className="relative overflow-hidden bg-background min-h-screen flex flex-col justify-end" style={{ backgroundColor: '#F5F1E8' }}>
         {/* Hero Background Illustration */}
         <div 
           className="absolute inset-0 z-0 pointer-events-none"
           style={{
-            backgroundImage: "url('/Hero-Section.png')",
+            backgroundImage: "url('/Hero-Section.jpg')",
             backgroundSize: '100% auto',
             backgroundPosition: 'top center',
             backgroundRepeat: 'no-repeat'
           }}
         />
-        <div className="absolute inset-0 z-0 flex items-center pointer-events-none mt-90">
-           <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-white/90 via-white/50 to-transparent z-[-1]" />
-           <div className="text-left space-y-2 opacity-90 ml-10 relative z-10 block">
-            <h1 className="text-6xl max-md:text-2xl font-playfair font-bold text-[#064E3B] drop-shadow-sm tracking-wide">
-              Trân trọng từng ngọn cỏ
-            </h1>
-            <h2 className="text-6xl max-md:text-2xl font-playfair font-bold text-[#064E3B] drop-shadow-sm tracking-wide ml-70">
-              giữ gìn một nền y
-            </h2>
-           </div>
-        </div>
       </section>
 
-      <section id="intro" className="relative overflow-hidden mx-12 pt-20 pb-10">
+      <section id="intro" className="relative overflow-hidden min-h-screen flex items-center" style={{ backgroundColor: '#F5F1E8' }}>
         {/* Background Image */}
         <div 
           className="absolute inset-0 z-0 pointer-events-none opacity-15"
@@ -83,7 +72,7 @@ export default function Home() {
           }}
         />
 
-        <div className="max-w-7xl mx-auto flex flex-row items-center gap-12 md:gap-24 relative z-10 px-6">
+        <div className="max-w-screen mx-auto flex flex-row items-center gap-8 md:gap-16 relative z-10 px-6">
           {/* Left: Circular Image */}
           <div className="w-1/2 flex justify-center">
               <img 
@@ -103,10 +92,10 @@ export default function Home() {
               <Link href="#" className="hover:text-accent transition-colors"><Radio size={20} /></Link>
             </div>
 
-            <div className="space-y-4 text-[#064E3B] pb-12">
-              <h2 className="text-3xl max-md:text-sm font-playfair font-bold text-left mb-8">Xin Chào!</h2>
+            <div className="space-y-3 text-[#064E3B]">
+              <h2 className="text-3xl max-md:text-sm font-playfair font-bold text-left mb-4">Xin Chào!</h2>
               
-              <div className="space-y-3 font-semibold font-montserrat text-[15px] max-md:text-[5px] leading-relaxed text-#064E3B">
+              <div className="space-y-2 font-semibold font-montserrat text-[14px] max-md:text-[5px] leading-relaxed text-#064E3B">
                 <p>
                   Cảm ơn bạn đã ghé thăm Hải Lĩnh Y Quán. 
                   Đây không chỉ là một không gian chăm sóc sức khỏe, mà là tâm huyết của những người đam mê sưu tầm và nghiên cứu những giá trị tinh túy của Y học Cổ truyền.
@@ -131,10 +120,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="newsletter" className="bg-background py-10 mx-12 overflow-hidden">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-20">
+      <section id="newsletter" className="bg-background overflow-hidden min-h-screen flex items-center">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
           {/* Left Side: Info */}
-          <div className="w-full md:w-1/2 text-center space-y-8">
+          <div className="w-full md:w-1/2 text-center space-y-6">
             <div className="space-y-2">
               <h3 className="font-montserrat font-medium tracking-[0.2em] text-primary/70 uppercase">Bản tin</h3>
               <h2 className="text-4xl md:text-5xl font-playfair font-normal text-primary tracking-wide">Y HỌC CỔ TRUYỀN</h2>
