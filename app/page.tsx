@@ -121,7 +121,7 @@ export default function Home() {
       </section>
 
       <section id="newsletter" className="bg-background xl:min-h-screen xl:py-32 px-6 overflow-hidden">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-20">
+        <div className="max-w-screen mx-auto flex flex-col md:flex-row items-center gap-20">
           {/* Illustration Side */}
           <div className="w-full md:w-1/2 flex justify-center order-2 md:order-1">
             <div className="relative group">
