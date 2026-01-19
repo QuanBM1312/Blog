@@ -122,9 +122,9 @@ export default function Home() {
       </section>
 
       <section id="newsletter" className="bg-background xl:min-h-screen py-10 xl:py-32 px-6 overflow-hidden">
-        <div className="max-w-screen mx-auto flex flex-col md:flex-row items-center gap-20">
+        <div className="max-w-screen mx-auto flex flex-col xl:flex-row items-center gap-20">
           {/* Illustration Side */}
-          <div className="w-full md:w-1/2 flex justify-center order-1 md:order-2">
+          <div className="w-full xl:w-1/2 flex justify-center order-1 md:order-2">
             <div className="relative group">
               <img 
                 src="/form.webp" 
@@ -141,13 +141,13 @@ export default function Home() {
               <h2 className="text-4xl xl:text-5xl font-playfair font-bold text-primary tracking-wide">
                 Y HỌC CỔ TRUYỀN
               </h2>
-              <p className="font-montserrat text-lg text-primary/70 leading-relaxed max-w-lg">
+              <p className="font-montserrat text-lg text-primary/70 leading-relaxed">
                 Cùng Hải Lĩnh Y Quán lắng nghe cơ thể và phòng bệnh từ gốc. 
                 Đăng ký để nhận các bài viết dưỡng sinh chuyên sâu cùng ưu đãi trị liệu đặc quyền gửi riêng cho bạn.
               </p>
             </div>
             
-            <form className="flex flex-col sm:flex-row gap-4 max-w-md ">
+            <form className="flex flex-col sm:flex-row gap-4 ">
               <input 
                 type="email" 
                 placeholder="Nhập email của bạn" 
