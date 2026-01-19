@@ -121,13 +121,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="newsletter" className="bg-background xl:min-h-screen py-10 xl:py-32 px-6 overflow-hidden">
+      <section id="newsletter" className="bg-background py-10 xl:py-32 px-6 overflow-hidden">
         <div className="max-w-screen mx-auto flex flex-col xl:flex-row items-center gap-20">
           {/* Illustration Side */}
-          <div className="w-full xl:w-1/2 flex justify-center order-1 md:order-2">
+          <div className="w-full xl:w-2/5 flex justify-center order-1 md:order-2">
             <div className="relative group">
               <img 
-                src="/form.webp" 
+                src="/form.jpg" 
                 alt="Y Học Cổ Truyền" 
                 className="w-full max-w-full h-auto object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-500"
               />
@@ -138,6 +138,9 @@ export default function Home() {
           {/* Content Side */}
           <div className="w-full xl:w-1/2 space-y-12 order-1 items-center md:order-2 max-xl:mx-2">
             <div className="space-y-6">
+              <h2 className="text-3xl xl:text-4xl font-playfair font-bold text-primary tracking-wide">
+                Bản tin
+              </h2>
               <h2 className="text-4xl xl:text-5xl font-playfair font-bold text-primary tracking-wide">
                 Y HỌC CỔ TRUYỀN
               </h2>
