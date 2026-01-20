@@ -1,7 +1,11 @@
+"use client"
+
 import Link from "next/link"
 import { Facebook, Instagram, Youtube, Radio } from "lucide-react"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
+import { Modal } from "@/components/Modal"
+import { useState } from "react"
 
 interface BlogPost {
   id: string
@@ -12,7 +16,6 @@ interface BlogPost {
   slug: string
 }
 
-// Sample blog data - replace with actual data source
 const blogPosts: BlogPost[] = [
   {
     id: "1",
@@ -41,6 +44,60 @@ const blogPosts: BlogPost[] = [
 ]
 
 export default function Home() {
+  const [formData, setFormData] = useState({
+    email: "",
+  });
+
+  const [modalState, setModalState] = useState<{
+    isOpen: boolean;
+    title: string;
+    message: string;
+    type: 'success' | 'error';
+  }>({
+    isOpen: false,
+    title: "",
+    message: "",
+    type: 'success',
+  });
+
+  const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const googleFormUrl =
+      "https://docs.google.com/forms/d/e/1FAIpQLScK-saWEluIV-sEaZ7YSr9m9Yh_6nvyNn4IjPOF4iVIxg_4yg/formResponse";
+    const formDataUrl = new URLSearchParams();
+
+    formDataUrl.append("entry.524928883", formData.email); // Email
+
+    try {
+      await fetch(googleFormUrl, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: formDataUrl.toString(),
+      });
+      setFormData({
+        email: "",
+      });
+      setModalState({
+        isOpen: true,
+        title: "Đăng ký thành công!",
+        message: "Cảm ơn bạn đã đăng ký nhận bản tin của Hải Lĩnh Y Quán. Chúng tôi sẽ gửi những thông tin hữu ích đến bạn sớm nhất.",
+        type: 'success',
+      });
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setModalState({
+        isOpen: true,
+        title: "Có lỗi xảy ra",
+        message: "Rất tiếc, quá trình đăng ký đã gặp sự cố. Vui lòng kiểm tra lại kết nối và thử lại.",
+        type: 'error',
+      });
+    }
+  };
+
   return (
     <>
       <Header />
@@ -142,9 +199,9 @@ export default function Home() {
           <div className="w-full xl:w-1/2 space-y-12 order-1 items-center md:order-2 max-xl:mx-2">
             <div className="space-y-6">
               <h2 className="text-3xl xl:text-4xl font-playfair font-bold text-primary tracking-wide">
-                Bản tin
+                BẢN TIN
               </h2>
-              <h2 className="text-4xl xl:text-5xl font-playfair font-bold text-primary tracking-wide">
+              <h2 className="text-4xl xl:text-[45px] font-playfair font-bold text-primary tracking-wide">
                 Y HỌC CỔ TRUYỀN
               </h2>
               <p className="font-montserrat text-lg text-primary/70 leading-relaxed">
@@ -153,11 +210,16 @@ export default function Home() {
               </p>
             </div>
             
-            <form className="flex flex-col sm:flex-row gap-4 ">
-              <input 
-                type="email" 
-                placeholder="Nhập email của bạn" 
-                className="flex-grow px-6 py-4 bg-white border border-border focus:outline-none focus:border-primary transition-all font-montserrat text-primary"
+            <form onSubmit={handleFormSubmit} className="flex flex-col sm:flex-row gap-4 ">
+              <input
+                type="email"
+                placeholder="Nhập email của bạn"
+                value={formData.email}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
+                className="w-full px-4 py-3 rounded-md border border-[#00ACB8] bg-white text-[15px] placeholder:text-[#B0B0B0] focus:outline-none focus:ring-2 focus:ring-[#00ACB8]"
+                required
               />
               <button 
                 type="submit" 
@@ -174,6 +236,13 @@ export default function Home() {
       {/* Footer */}
       <Footer />
     </main>
+    <Modal
+      isOpen={modalState.isOpen}
+      onClose={() => setModalState(prev => ({ ...prev, isOpen: false }))}
+      title={modalState.title}
+      message={modalState.message}
+      type={modalState.type}
+    />
     </>
   )
 }
