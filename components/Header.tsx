@@ -13,6 +13,7 @@ export function Header() {
     { href: "/blog", label: "Blog" },
     { href: "#footer", label: "Về chúng tôi" },
     { href: "/shop", label: "Khóa học" },
+    { href: "/podcast", label: "Y lý y học cổ truyền" },
   ]
 
   return (
@@ -31,7 +32,7 @@ export function Header() {
         </Link>
         
         {/* Desktop Navigation */}
-        <nav className="hidden xl:flex gap-12 text-[18px] font-montserrat font-bold tracking-[0.2em] text-primary uppercase">
+        <nav className="hidden xl:flex gap-12 text-[16px] font-montserrat font-bold tracking-[0.2em] text-primary uppercase">
           {navLinks.map((link) => (
             <Link
               key={link.href}

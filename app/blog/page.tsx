@@ -40,10 +40,10 @@ const blogPosts: BlogPost[] = [
 
 export default function BlogIndex() {
   return (
+    <>
+    <Header />
     <main className="min-h-screen bg-background">
-      <Header />
-      
-      <section className="max-w-7xl mx-auto px-6 py-20">
+      <section className="max-w-7xl mx-auto px-6 py-20 pt-32">
         <h1 className="text-4xl font-playfair font-normal text-primary mb-12 uppercase tracking-widest text-center">
           Blog Sức Khỏe
         </h1>
@@ -82,5 +82,6 @@ export default function BlogIndex() {
 
       <Footer />
     </main>
+    </>
   )
 }

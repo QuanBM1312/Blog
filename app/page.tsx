@@ -46,22 +46,25 @@ export default function Home() {
       <Header />
       <main className="min-h-screen">
         <section id="banner" className="relative overflow-hidden xl:min-h-screen h-full bg-background flex flex-col pt-[76px] xl:pt-[92px]" style={{ backgroundColor: '#F2EDE3' }}>
-        <img 
-          src="/Hero-Section.jpg"
-          alt="Hero Section"
-          className="flex-1 h-full w-full xl:w-auto object-contain object-center md:mx-auto"
-        />
-      </section>
+          <img 
+            src="/Hero-Section.jpg"
+            alt="Hero Section"
+            className="flex-1 h-full w-full xl:w-auto object-contain object-center md:mx-auto"
+          />
+        </section>
 
-      <section id="intro" className="relative max-xl:py-4 overflow-hidden xl:min-h-screen h-full flex items-center" style={{ backgroundColor: '#F2EDE3' }}>
-        {/* Background Image */}
+      <section id="intro" className="relative max-xl:py-4 overflow-hidden min-h-[calc(100vh-76px)] xl:min-h-[calc(100vh-92px)] h-full flex items-center" style={{ backgroundColor: '#F2EDE3' }}>
+        {/* Background Image with Gradient Opacity */}
         <div 
-          className="absolute inset-0 z-0 pointer-events-none opacity-15"
+          className="absolute inset-0 z-0 pointer-events-none"
           style={{
             backgroundImage: "url('/Intro-bg.png')",
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
+            backgroundRepeat: 'no-repeat',
+            opacity: 0.15,
+            maskImage: 'linear-gradient(to bottom, transparent 0%, black 100%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 100%)'
           }}
         />
 
@@ -121,7 +124,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="newsletter" className="bg-background py-10 xl:py-32 px-6 overflow-hidden">
+      <section id="newsletter" className="bg-background py-10 xl:py-32 px-6 overflow-hidden min-h-[calc(100vh-76px)] xl:min-h-[calc(100vh-92px)] flex items-center">
         <div className="max-w-screen mx-auto flex flex-col xl:flex-row items-center gap-20">
           {/* Illustration Side */}
           <div className="w-full xl:w-2/5 flex justify-center order-1 md:order-2">

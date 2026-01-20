@@ -4,10 +4,11 @@ import { BookOpen, Star } from "lucide-react"
 
 export default function ShopPage() {
   return (
+    <>
+    <Header />
     <main className="min-h-screen bg-background">
-      <Header />
       
-      <section className="max-w-7xl mx-auto px-6 py-20">
+      <section className="max-w-7xl mx-auto px-6 py-20 pt-32">
         <div className="flex flex-col items-center text-center mb-16">
           <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mb-6">
             <BookOpen className="text-primary" size={32} />
@@ -25,7 +26,7 @@ export default function ShopPage() {
             <div key={i} className="group border border-border bg-white overflow-hidden flex flex-col h-full hover:shadow-xl transition-all">
               <div className="h-64 bg-cream flex items-center justify-center relative">
                  <img 
-                  src={`/form.webp`} 
+                  src={`/form.jpg`} 
                   alt="Course Thumbnail" 
                   className="w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all"
                 />
@@ -66,5 +67,6 @@ export default function ShopPage() {
 
       <Footer />
     </main>
+    </>
   )
 }

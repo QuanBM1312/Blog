@@ -4,10 +4,10 @@ import { Mic, Play } from "lucide-react"
 
 export default function PodcastPage() {
   return (
+    <>
+    <Header />
     <main className="min-h-screen bg-background">
-      <Header />
-      
-      <section className="max-w-7xl mx-auto px-6 py-20">
+      <section className="max-w-7xl mx-auto px-6 py-20 pt-32">
         <div className="flex flex-col items-center text-center mb-16">
           <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mb-6">
             <Mic className="text-primary" size={32} />
@@ -41,8 +41,8 @@ export default function PodcastPage() {
           </div>
         </div>
       </section>
-
       <Footer />
     </main>
+    </>
   )
 }
