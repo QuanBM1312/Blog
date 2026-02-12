@@ -1,82 +1,92 @@
 import Link from "next/link"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
-
-interface BlogPost {
-  id: string
-  title: string
-  excerpt: string
-  date: string
-  category: string
-  slug: string
-}
-
-const blogPosts: BlogPost[] = [
-  {
-    id: "1",
-    title: "Cân Bằng Âm Dương trong Cuộc Sống Hiện Đại",
-    excerpt: "Khám phá cách duy trì cân bằng âm dương giữa nhịp sống bận rộn của thời đại ngày nay.",
-    date: "15 Tháng 1, 2025",
-    category: "Triết Học TCM",
-    slug: "can-bang-am-duong",
-  },
-  {
-    id: "2",
-    title: "Năm Phần Tử và Mùa Của Bạn",
-    excerpt: "Tìm hiểu cách năm phần tử liên kết với các mùa và cách chúng ảnh hưởng đến sức khỏe của bạn.",
-    date: "10 Tháng 1, 2025",
-    category: "Năm Phần Tử",
-    slug: "nam-phan-tu-va-mua",
-  },
-  {
-    id: "3",
-    title: "Sức Mạnh Chữa Lành của Các Loại Thảo Dược",
-    excerpt: "Khám phá các loại thảo dược truyền thống và những lợi ích tự nhiên của chúng đối với sức khỏe.",
-    date: "5 Tháng 1, 2025",
-    category: "Thảo Dược",
-    slug: "thao-duoc-chua-lanh",
-  },
-]
+import { MOCK_POSTS, MOCK_CATEGORIES, Post, Category } from "@/lib/mock-data"
 
 export default function BlogIndex() {
+  const parentCategories = MOCK_CATEGORIES.filter(c => !c.parent_id);
+
   return (
     <>
     <Header />
     <main className="min-h-screen bg-background">
       <section className="max-w-7xl mx-auto px-6 py-20 pt-32">
-        <h1 className="text-4xl font-playfair font-normal text-primary mb-12 uppercase tracking-widest text-center">
-          Blog Sức Khỏe
+        <h1 className="text-4xl md:text-5xl font-playfair font-normal text-primary mb-20 uppercase tracking-[0.2em] text-center border-b border-primary/10 pb-10">
+          Chuyên Mục Sức Khỏe
         </h1>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {blogPosts.map((post) => (
-            <Link 
-              key={post.id} 
-              href={`/blog/${post.slug}`}
-              className="group border border-border bg-white hover:shadow-lg transition-all p-8 flex flex-col h-full"
-            >
-              <div className="flex items-center gap-4 mb-4">
-                <span className="text-[10px] font-montserrat uppercase tracking-[0.2em] text-accent font-bold">
-                  {post.category}
-                </span>
-                <span className="text-[10px] font-montserrat text-gray-400">
-                  {post.date}
-                </span>
+
+        <div className="space-y-24">
+          {parentCategories.map((parent) => {
+            const children = MOCK_CATEGORIES.filter(c => c.parent_id === parent.id);
+            
+            return (
+              <div key={parent.id} className="space-y-12">
+                {/* Parent Category Header */}
+                <div className="flex items-center gap-6">
+                  <h2 className="text-3xl font-playfair text-primary uppercase tracking-widest whitespace-nowrap">
+                    {parent.name}
+                  </h2>
+                  <div className="h-[1px] bg-primary/20 w-full"></div>
+                </div>
+
+                {/* Subcategories Sections */}
+                <div className="grid grid-cols-1 gap-16">
+                  {children.map((child) => {
+                    const childPosts = MOCK_POSTS.filter(p => p.category_id === child.id);
+                    if (childPosts.length === 0) return null;
+
+                    return (
+                      <div key={child.id} className="space-y-8">
+                        <div className="flex items-center justify-between">
+                          <h3 className="text-xl font-playfair text-accent italic border-l-4 border-accent pl-4">
+                            {child.name}
+                          </h3>
+                          <Link href={`/category/${child.slug}`} className="text-[10px] font-montserrat uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors">
+                            Xem tất cả &rarr;
+                          </Link>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                          {childPosts.map((post) => (
+                            <Link 
+                              key={post.id} 
+                              href={`/blog/${post.slug}`}
+                              className="group border border-border bg-white hover:shadow-xl transition-all flex flex-col h-full overflow-hidden"
+                            >
+                              <div className="aspect-[16/10] overflow-hidden">
+                                <img 
+                                  src={post.featured_image_url} 
+                                  alt={post.title} 
+                                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                />
+                              </div>
+                              <div className="p-6 flex flex-col flex-grow">
+                                <span className="text-[10px] font-montserrat text-gray-400 mb-3">
+                                  {new Date(post.published_at).toLocaleDateString("vi-VN")}
+                                </span>
+                                
+                                <h4 className="text-xl font-playfair font-normal text-primary mb-3 group-hover:text-accent transition-colors line-clamp-2">
+                                  {post.title}
+                                </h4>
+                                
+                                <p className="text-gray-600 font-montserrat text-xs leading-relaxed mb-6 flex-grow line-clamp-3">
+                                  {post.excerpt}
+                                </p>
+                                
+                                <span className="text-[10px] font-montserrat font-bold tracking-[0.2em] text-primary uppercase border-b border-primary/20 w-fit pb-1 group-hover:border-accent group-hover:text-accent group-hover:border-accent/50 transition-all">
+                                  Đọc chi tiết
+                                </span>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
-              
-              <h2 className="text-2xl font-playfair font-normal text-primary mb-4 group-hover:text-accent transition-colors">
-                {post.title}
-              </h2>
-              
-              <p className="text-gray-600 font-montserrat text-sm leading-relaxed mb-6 flex-grow">
-                {post.excerpt}
-              </p>
-              
-              <span className="text-[11px] font-montserrat font-bold tracking-[0.2em] text-primary uppercase border-b border-primary w-fit pb-1 group-hover:border-accent group-hover:text-accent transition-all">
-                Đọc thêm
-              </span>
-            </Link>
-          ))}
+            );
+          })}
         </div>
       </section>
 
