@@ -3,6 +3,7 @@ import { Breadcrumbs } from './Breadcrumbs';
 import { TableOfContents } from './TableOfContents';
 import { GlobalCTA } from './GlobalCTA';
 import { RelatedPosts } from './RelatedPosts';
+import { formatPostContent } from '@/lib/services/content-processor';
 
 interface StandardLayoutProps {
   post: Post;
@@ -30,7 +31,7 @@ export function StandardLayout({ post, category }: StandardLayoutProps) {
           <div 
             id="post-content"
             className="prose prose-stone lg:prose-xl max-w-none font-montserrat leading-loose text-foreground/80"
-            dangerouslySetInnerHTML={{ __html: post.content }}
+            dangerouslySetInnerHTML={{ __html: formatPostContent(post.content) }}
           />
 
           <GlobalCTA />

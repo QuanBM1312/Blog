@@ -6,6 +6,7 @@ export async function getPosts(): Promise<AppPost[]> {
   const { data, error } = await supabase
     .from('posts')
     .select('*, author:users(name)')
+    .eq('status', 'published')
     .order('created_at', { ascending: false })
 
   if (error) {
@@ -48,6 +49,7 @@ export async function getPostsByCategory(categorySlug: string): Promise<AppPost[
     .from('posts')
     .select('*, author:users(name)')
     .eq('category_id', (categoryData as any).id)
+    .eq('status', 'published')
     .order('created_at', { ascending: false })
 
   if (error) {

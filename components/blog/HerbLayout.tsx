@@ -2,6 +2,7 @@ import { Post, Category } from '@/lib/mock-data';
 import { Breadcrumbs } from './Breadcrumbs';
 import { GlobalCTA } from './GlobalCTA';
 import { RelatedPosts } from './RelatedPosts';
+import { formatPostContent } from '@/lib/services/content-processor';
 
 interface HerbLayoutProps {
   post: Post;
@@ -69,7 +70,7 @@ export function HerbLayout({ post, category }: HerbLayoutProps) {
       <div className="max-w-4xl mx-auto space-y-12 mb-20">
         <div id="post-content" className="prose prose-stone md:prose-xl max-w-none font-montserrat leading-loose text-foreground/80">
           <h2 className="font-playfair text-3xl text-primary mb-8 text-center uppercase tracking-widest">Chi tiết & Giai thoại</h2>
-          <div dangerouslySetInnerHTML={{ __html: post.content }} />
+          <div dangerouslySetInnerHTML={{ __html: formatPostContent(post.content) }} />
         </div>
       </div>
 
