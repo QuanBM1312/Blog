@@ -11,7 +11,7 @@ export default function BlogIndex() {
     <Header />
     <main className="min-h-screen bg-background">
       <section className="max-w-7xl mx-auto px-6 py-20 pt-32">
-        <h1 className="text-4xl md:text-5xl font-playfair font-normal text-primary mb-20 uppercase tracking-[0.2em] text-center border-b border-primary/10 pb-10">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-playfair font-normal text-primary mb-20 uppercase tracking-[0.15em] sm:tracking-[0.2em] text-center border-b border-primary/10 pb-10 break-words px-2">
           Chuyên Mục Sức Khỏe
         </h1>
 
@@ -22,11 +22,11 @@ export default function BlogIndex() {
             return (
               <div key={parent.id} className="space-y-12">
                 {/* Parent Category Header */}
-                <div className="flex items-center gap-6">
-                  <h2 className="text-3xl font-playfair text-primary uppercase tracking-widest whitespace-nowrap">
+                <div className="flex items-center gap-3 sm:gap-6">
+                  <h2 className="text-xl sm:text-2xl md:text-3xl font-playfair text-primary uppercase tracking-wide sm:tracking-widest break-words min-w-0 flex-shrink">
                     {parent.name}
                   </h2>
-                  <div className="h-[1px] bg-primary/20 w-full"></div>
+                  <div className="h-[1px] bg-primary/20 flex-grow min-w-[20px]"></div>
                 </div>
 
                 {/* Subcategories Sections */}
@@ -37,11 +37,11 @@ export default function BlogIndex() {
 
                     return (
                       <div key={child.id} className="space-y-8">
-                        <div className="flex items-center justify-between">
-                          <h3 className="text-xl font-playfair text-accent italic border-l-4 border-accent pl-4">
+                        <div className="flex items-center justify-between gap-3">
+                          <h3 className="text-lg sm:text-xl font-playfair text-accent italic border-l-4 border-accent pl-3 sm:pl-4 break-words min-w-0 flex-shrink">
                             {child.name}
                           </h3>
-                          <Link href={`/category/${child.slug}`} className="text-[10px] font-montserrat uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors">
+                          <Link href={`/category/${child.slug}`} className="text-[10px] font-montserrat uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors whitespace-nowrap flex-shrink-0">
                             Xem tất cả &rarr;
                           </Link>
                         </div>
