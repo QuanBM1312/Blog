@@ -285,4 +285,105 @@ export const MOCK_POSTS: Post[] = [
       "https://images.unsplash.com/photo-1615485500704-8e990999dd95?q=80&w=2070&auto=format&fit=crop",
     author: { name: "Người Yêu Cây" },
   },
+  {
+    id: "post-8",
+    title: "Chiều mưa và tách trà sen",
+    slug: "chieu-mua-tra-sen",
+    excerpt:
+      "Ngồi bên cửa sổ, nhìn mưa rơi, tôi pha một tách trà sen thơm dịu. Đó là khoảnh khắc bình yên nhất trong ngày.",
+    content: `
+      <p>Mưa chiều Hà Nội có một nét riêng, nhẹ nhàng mà sâu lắng. Tôi ngồi bên cửa sổ, tay cầm tách trà sen ấm nóng, ngắm những giọt mưa rơi trên mái ngói cũ.</p>
+      
+      <h2>Trà sen - Hương vị của mùa hè Hà Nội</h2>
+      <p>Trà sen được ướp từ những cánh sen tươi, mang hương thơm thanh khiết và vị ngọt tự nhiên. Mỗi ngụm trà như mang theo cả một mùa hè bên hồ sen.</p>
+      
+      <blockquote>"Trà không chỉ là thức uống, mà là cách ta sống chậm lại, để cảm nhận từng khoảnh khắc."</blockquote>
+    `,
+    published_at: "2025-02-14T14:00:00Z",
+    category_id: "cat-2-2",
+    featured_image_url:
+      "https://images.unsplash.com/photo-1556679343-c7306c1976bc?q=80&w=2070&auto=format&fit=crop",
+    author: { name: "Thanh Trà" },
+  },
+  {
+    id: "post-9",
+    title: "Gặp gỡ bên ly trà hoa cúc",
+    slug: "gap-go-tra-hoa-cuc",
+    excerpt:
+      "Một buổi chiều, một người bạn cũ ghé thăm. Chúng tôi ngồi bên nhau, nhâm nhi trà hoa cúc và kể về những ngày tháng đã qua.",
+    content: `
+      <p>Đã lâu lắm rồi chúng tôi mới gặp lại nhau. Tôi pha một ấm trà hoa cúc, hương thơm dịu nhẹ lan tỏa trong không gian nhỏ bé của quán.</p>
+      
+      <h2>Trà hoa cúc - Vị thuốc an thần</h2>
+      <p>Hoa cúc có tính mát, giúp thanh nhiệt, giải độc, sáng mắt và an thần. Uống trà hoa cúc vào buổi chiều giúp thư giãn tinh thần sau một ngày làm việc căng thẳng.</p>
+      
+      <p>Chúng tôi nói chuyện, cười đùa, như thời gian chưa từng trôi qua. Tách trà vẫn còn ấm, tình bạn vẫn còn đó.</p>
+    `,
+    published_at: "2025-02-15T16:30:00Z",
+    category_id: "cat-2-2",
+    featured_image_url:
+      "https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?q=80&w=2070&auto=format&fit=crop",
+    author: { name: "Thanh Trà" },
+  },
+  {
+    id: "post-10",
+    title: "Trà gừng mật ong - Món quà mùa đông",
+    slug: "tra-gung-mat-ong",
+    excerpt:
+      "Khi trời lạnh về, không gì ấm áp bằng một tách trà gừng mật ong. Đó là món quà tôi dành tặng cho những người thân yêu.",
+    content: `
+      <p>Mùa đông Hà Nội lạnh thấu xương. Tôi thường pha trà gừng mật ong cho khách, để họ cảm nhận được sự ấm áp không chỉ từ tách trà, mà còn từ tấm lòng.</p>
+      
+      <h2>Công dụng của trà gừng mật ong</h2>
+      <p>Gừng có tính ấm, giúp xua tan cảm lạnh, tăng cường tuần hoàn máu. Mật ong bổ dưỡng, giúp nhuận phế, giảm ho. Kết hợp cả hai tạo nên thức uống tuyệt vời cho mùa đông.</p>
+      
+      <h2>Cách pha đơn giản</h2>
+      <p>Gừng tươi thái lát, đun sôi với nước khoảng 10 phút. Tắt bếp, cho thêm 2 thìa mật ong. Uống nóng sẽ cảm nhận được hương vị đậm đà và sự ấm áp lan tỏa khắp cơ thể.</p>
+    `,
+    published_at: "2025-02-16T10:00:00Z",
+    category_id: "cat-2-2",
+    featured_image_url:
+      "https://images.unsplash.com/photo-1597318130993-19f9dd1f9e3d?q=80&w=2070&auto=format&fit=crop",
+    author: { name: "Thanh Trà" },
+  },
+  {
+    id: "post-11",
+    title: "Buổi sáng bên tách trà xanh",
+    slug: "sang-ben-tra-xanh",
+    excerpt:
+      "Mỗi buổi sáng, tôi thức dậy cùng ánh nắng và một tách trà xanh. Đó là cách tôi bắt đầu một ngày mới tràn đầy năng lượng.",
+    content: `
+      <p>Trà xanh là người bạn đồng hành mỗi sáng của tôi. Không cần nhiều nghi thức, chỉ cần một tách trà nhỏ, tôi đã cảm thấy sảng khoái và tỉnh táo.</p>
+      
+      <h2>Lợi ích của trà xanh buổi sáng</h2>
+      <p>Trà xanh chứa nhiều chất chống oxi hóa, giúp tăng cường miễn dịch, cải thiện sức khỏe tim mạch và hỗ trợ giảm cân. Uống trà xanh buổi sáng còn giúp tỉnh táo và tập trung tốt hơn.</p>
+      
+      <blockquote>"Một ngày tốt lành bắt đầu từ một tách trà xanh thơm ngát."</blockquote>
+    `,
+    published_at: "2025-02-17T07:00:00Z",
+    category_id: "cat-2-2",
+    featured_image_url:
+      "https://images.unsplash.com/photo-1627435601361-ec25f5b1d0e5?q=80&w=2070&auto=format&fit=crop",
+    author: { name: "Thanh Trà" },
+  },
+  {
+    id: "post-12",
+    title: "Đêm khuya và tách trà hoa nhài",
+    slug: "dem-khuya-tra-hoa-nhai",
+    excerpt:
+      "Khi đêm về, tôi thích ngồi một mình, pha một tách trà hoa nhài và đọc sách. Đó là khoảng thời gian riêng tư quý giá nhất.",
+    content: `
+      <p>Đêm khuya, khi mọi người đã ngủ, tôi thích ngồi bên bàn, ánh đèn vàng, một tách trà hoa nhài và một cuốn sách cũ. Đó là lúc tôi thực sự là chính mình.</p>
+      
+      <h2>Trà hoa nhài - Hương thơm của đêm</h2>
+      <p>Hoa nhài có hương thơm nồng nàn, quyến rũ. Trà hoa nhài giúp thư giãn tinh thần, giảm căng thẳng và mang lại giấc ngủ ngon.</p>
+      
+      <p>Tôi nhấp một ngụm trà, lật từng trang sách, và cảm thấy bình yên tràn ngập trong lòng. Đêm khuya không còn cô đơn khi có trà và sách bên cạnh.</p>
+    `,
+    published_at: "2025-02-18T22:00:00Z",
+    category_id: "cat-2-2",
+    featured_image_url:
+      "https://images.unsplash.com/photo-1544787219-7f47ccb76574?q=80&w=2070&auto=format&fit=crop",
+    author: { name: "Thanh Trà" },
+  },
 ];
