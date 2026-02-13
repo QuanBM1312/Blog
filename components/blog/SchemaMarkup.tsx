@@ -8,7 +8,7 @@ interface SchemaMarkupProps {
 export function SchemaMarkup({ post, category }: SchemaMarkupProps) {
   const schema = {
     "@context": "https://schema.org",
-    "@type": category.template_type === 'herb_portfolio' ? "MedicalWebPage" : "BlogPosting",
+    "@type": category.template_type === 'herb_dictionary' ? "MedicalWebPage" : "BlogPosting",
     "headline": post.title,
     "description": post.excerpt,
     "image": post.featured_image_url,

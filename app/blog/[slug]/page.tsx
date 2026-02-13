@@ -33,7 +33,7 @@ export default async function BlogPostPage({ params }: BlogPostProps) {
   // Hàm render layout tương ứng
   const renderLayout = () => {
     switch (category.template_type) {
-      case "herb_portfolio":
+      case "herb_dictionary":
         return <HerbLayout post={post} category={category} />
       case "storytelling":
         return <StorytellingLayout post={post} category={category} />

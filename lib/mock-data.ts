@@ -2,7 +2,7 @@ export interface Category {
   id: string;
   name: string;
   slug: string;
-  template_type: "standard" | "herb_portfolio" | "storytelling";
+  template_type: "standard" | "herb_dictionary" | "storytelling";
   parent_id?: string;
 }
 
@@ -23,25 +23,25 @@ export interface Post {
 }
 
 export const MOCK_CATEGORIES: Category[] = [
-  // Parent 1: LÝ LUẬN Y HỌC CỔ TRUYỀN
+  // Parent 1: Y Lý Y Học Cổ Truyền
   {
     id: "cat-1",
-    name: "LÝ LUẬN Y HỌC CỔ TRUYỀN",
-    slug: "ly-luan-y-hoc",
+    name: "Y Lý – Y Học Cổ Truyền",
+    slug: "y-ly-y-hoc-co-truyen",
     template_type: "standard",
   },
   {
     id: "cat-1-1",
-    name: "Lý Luận Căn Bản",
-    slug: "ly-luan-can-ban",
+    name: "Lý Luận Cơ Bản",
+    slug: "ly-luan-co-ban",
     template_type: "standard",
     parent_id: "cat-1",
   },
   {
-    id: "cat-1-2",
-    name: "Từ Điển Thảo Mộc",
-    slug: "tu-dien-thao-moc",
-    template_type: "herb_portfolio",
+    id: "cat-1-4", // New category
+    name: "Pháp – Phương – Dược",
+    slug: "phap-phuong-duoc",
+    template_type: "standard",
     parent_id: "cat-1",
   },
   {
@@ -51,9 +51,16 @@ export const MOCK_CATEGORIES: Category[] = [
     template_type: "standard",
     parent_id: "cat-1",
   },
+  {
+    id: "cat-1-2",
+    name: "Từ Điển Dược Liệu",
+    slug: "tu-dien-duoc-lieu",
+    template_type: "herb_dictionary",
+    parent_id: "cat-1",
+  },
 
   // Parent 2: BLOG
-  { id: "cat-2", name: "BLOG", slug: "blog", template_type: "standard" },
+  { id: "cat-2", name: "Blog", slug: "blog", template_type: "standard" },
   {
     id: "cat-2-1",
     name: "Kiến Thức Dưỡng Sinh",
@@ -62,9 +69,16 @@ export const MOCK_CATEGORIES: Category[] = [
     parent_id: "cat-2",
   },
   {
+    id: "cat-2-3", // New category
+    name: "Từ Cây Cỏ",
+    slug: "tu-cay-co",
+    template_type: "standard",
+    parent_id: "cat-2",
+  },
+  {
     id: "cat-2-2",
-    name: "Duyên Lành Hạnh Ngộ",
-    slug: "duyen-lanh-hanh-ngo",
+    name: "Bên Ấm Trà",
+    slug: "ben-am-tra",
     template_type: "storytelling",
     parent_id: "cat-2",
   },
@@ -212,5 +226,63 @@ export const MOCK_POSTS: Post[] = [
     featured_image_url:
       "https://images.unsplash.com/photo-1596797038530-2c39fa81046e?q=80&w=1974&auto=format&fit=crop",
     author: { name: "Dưỡng Sinh Viên" },
+  },
+  {
+    id: "post-6",
+    title: "Phép Hãn (Làm ra mồ hôi) - Khi nào nên dùng?",
+    slug: "phep-han-giai-bieu",
+    excerpt:
+      "Tìm hiểu về một trong Bát Pháp (8 phương pháp chữa bệnh) của Y học Cổ truyền dùng để trị các bệnh ở biểu (bên ngoài).",
+    content: `
+      <h2>1. Định nghĩa Phép Hãn</h2>
+      <p>Phép Hãn (Hãn pháp) là phương pháp dùng thuốc làm cho ra mồ hôi để đưa tà khí (phong, hàn, thấp, nhiệt...) đang ở phần biểu (da lông, cơ nhục nông) ra ngoài. Đây là pháp điều trị cơ bản khi tà khí mới xâm nhập vào cơ thể.</p>
+      
+      <h2>2. Chỉ định</h2>
+      <p>Dùng trong các trường hợp cảm mạo phong hàn, phong nhiệt, giai đoạn đầu của các bệnh truyền nhiễm, phong thấp đau nhức, thủy thũng (phù thũng) phần trên cơ thể.</p>
+
+      <h2>3. Các bài thuốc tiêu biểu</h2>
+      <ul>
+        <li><strong>Ma Hoàng Thang:</strong> Trị cảm mạo phong hàn thể thực (không có mồ hôi, sợ lạnh nhiều).</li>
+        <li><strong>Quế Chi Thang:</strong> Trị cảm mạo phong hàn thể hư (có mồ hôi, sợ gió).</li>
+        <li><strong>Tang Cúc Ẩm:</strong> Trị cảm mạo phong nhiệt (sốt, đau họng, ho).</li>
+      </ul>
+
+      <h2>4. Lưu ý quan trọng</h2>
+      <p>Không dùng phép hãn cho người đã mất nhiều tân dịch (mồ hôi trộm, nôn mửa, tiêu chảy nhiều), người già yếu khí huyết hư tổn nặng. Khi ra mồ hôi râm rấp là được, không nên cho ra quá nhiều gây vong dương (trụy tim mạch).</p>
+    `,
+    published_at: "2025-02-13T09:00:00Z",
+    category_id: "cat-1-4", // Pháp – Phương – Dược
+    featured_image_url:
+      "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?q=80&w=1974&auto=format&fit=crop",
+    author: { name: "Y Sư Tuệ Tâm" },
+  },
+  {
+    id: "post-7",
+    title: "Cây Sả - Hương thơm bình dị chữa bệnh",
+    slug: "cay-sa-chua-benh",
+    excerpt:
+      "Không chỉ là gia vị quen thuộc, cây sả còn là vị thuốc nam quý giá với nhiều công dụng bất ngờ trong vườn nhà.",
+    content: `
+      <h2>1. Tổng quan về cây Sả</h2>
+      <p>Sả (Cymbopogon) là loại cây cỏ sống lâu năm, mọc thành bụi. Toàn cây có mùi thơm đặc trưng của citral. Sả rất dễ trồng và phổ biến ở mọi vùng quê Việt Nam.</p>
+      
+      <h2>2. Công dụng chữa bệnh từ Sả</h2>
+      <h3>2.1. Giải cảm, trị ho</h3>
+      <p>Nồi nước xông lá sả cùng bưởi, hương nhu, tía tô... là phương thuốc dân gian hữu hiệu nhất để trị cảm cúm, giúp ra mồ hôi và nhẹ người nhanh chóng.</p>
+
+      <h3>2.2. Tốt cho tiêu hóa</h3>
+      <p>Tinh dầu sả giúp kích thích tiêu hóa, khử uế, trị đầy bụng, đau dạ dày, buồn nôn. Một tách trà sả gừng ấm là lựa chọn tuyệt vời sau bữa ăn nhiều dầu mỡ.</p>
+
+      <h3>2.3. Khử mùi và đuổi muỗi</h3>
+      <p>Trồng sả quanh nhà hoặc xông tinh dầu sả giúp xua đuổi muỗi và côn trùng hiệu quả, đồng thời tạo không gian thư giãn, giảm stress.</p>
+
+      <h2>3. Cách làm trà Sả tắc mật ong</h2>
+      <p>Đập dập 3 cây sả, nấu với 500ml nước trong 10 phút. Tắt bếp, thêm đường phèn hoặc mật ong, vắt thêm 2 quả tắc. Uống nóng hoặc lạnh đều rất ngon và bổ dưỡng.</p>
+    `,
+    published_at: "2025-02-13T10:00:00Z",
+    category_id: "cat-2-3", // Từ Cây Cỏ
+    featured_image_url:
+      "https://images.unsplash.com/photo-1615485500704-8e990999dd95?q=80&w=2070&auto=format&fit=crop",
+    author: { name: "Người Yêu Cây" },
   },
 ];
