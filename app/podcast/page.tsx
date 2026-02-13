@@ -1,12 +1,13 @@
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
-import { MOCK_POSTS, MOCK_CATEGORIES } from "@/lib/mock-data"
+import { getPostsByCategory } from "@/lib/services/post-service"
+import { getCategoryBySlug, getSubCategories } from "@/lib/services/category-service"
 import Link from "next/link"
 
-export default function PodcastPage() {
+export default async function PodcastPage() {
   // Get subcategories of "Y Lý – Y Học Cổ Truyền" category (cat-1)
-  const ylCategory = MOCK_CATEGORIES.find(cat => cat.slug === "y-ly-y-hoc-co-truyen")
-  const subcategories = MOCK_CATEGORIES.filter(cat => cat.parent_id === ylCategory?.id)
+  const ylCategory = await getCategoryBySlug("y-ly-y-hoc-co-truyen")
+  const subcategories = ylCategory ? await getSubCategories(ylCategory.slug) : []
 
   return (
     <>
@@ -18,8 +19,8 @@ export default function PodcastPage() {
         </h1>
 
         <div className="space-y-16">
-          {subcategories.map((child) => {
-            const childPosts = MOCK_POSTS.filter(p => p.category_id === child.id);
+          {await Promise.all(subcategories.map(async (child) => {
+            const childPosts = await getPostsByCategory(child.slug);
             if (childPosts.length === 0) return null;
 
             return (
@@ -66,7 +67,7 @@ export default function PodcastPage() {
                 </div>
               </div>
             );
-          })}
+          }))}
         </div>
       </section>
       <Footer />

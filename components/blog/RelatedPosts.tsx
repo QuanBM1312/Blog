@@ -1,14 +1,22 @@
 import Link from 'next/link';
-import { Post, MOCK_POSTS } from '@/lib/mock-data';
+import { getPostsByCategory } from '@/lib/services/post-service';
+import { getCategories } from '@/lib/services/category-service';
 
 interface RelatedPostsProps {
   currentPostId: string;
   categoryId: string;
 }
 
-export function RelatedPosts({ currentPostId, categoryId }: RelatedPostsProps) {
-  const related = MOCK_POSTS
-    .filter(p => p.category_id === categoryId && p.id !== currentPostId)
+export async function RelatedPosts({ currentPostId, categoryId }: RelatedPostsProps) {
+  // We need the category slug to use getPostsByCategory
+  const categories = await getCategories();
+  const category = categories.find(c => c.id === categoryId);
+  
+  if (!category) return null;
+
+  const allPostsInCat = await getPostsByCategory(category.slug);
+  const related = allPostsInCat
+    .filter(p => p.id !== currentPostId)
     .slice(0, 3);
 
   if (related.length === 0) return null;

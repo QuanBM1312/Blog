@@ -1,12 +1,9 @@
-"use client";
-
-import { Post, Category } from '@/lib/mock-data';
 import { GlobalCTA } from './GlobalCTA';
 import { RelatedPosts } from './RelatedPosts';
 
 interface StorytellingLayoutProps {
-  post: Post;
-  category: Category;
+  post: any;
+  category: any;
 }
 
 export function StorytellingLayout({ post, category }: StorytellingLayoutProps) {
@@ -46,7 +43,7 @@ export function StorytellingLayout({ post, category }: StorytellingLayoutProps) 
         />
 
         {/* Custom Blockquote Styler in Storytelling */}
-        <style jsx global>{`
+        <style dangerouslySetInnerHTML={{ __html: `
           .prose blockquote {
             font-family: var(--font-dancing);
             font-size: 1.5em;
@@ -58,7 +55,7 @@ export function StorytellingLayout({ post, category }: StorytellingLayoutProps) 
             margin: 4rem 0;
             position: relative;
           }
-        `}</style>
+        `}} />
 
         <GlobalCTA />
         <RelatedPosts currentPostId={post.id} categoryId={post.category_id} />

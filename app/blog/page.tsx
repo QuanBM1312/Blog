@@ -1,12 +1,13 @@
 import Link from "next/link"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
-import { MOCK_POSTS, MOCK_CATEGORIES, Post, Category } from "@/lib/mock-data"
+import { getPostsByCategory } from "@/lib/services/post-service"
+import { getCategoryBySlug, getSubCategories } from "@/lib/services/category-service"
 
-export default function BlogIndex() {
+export default async function BlogIndex() {
   // Get subcategories of "Blog" category (cat-2)
-  const blogCategory = MOCK_CATEGORIES.find(c => c.slug === "blog")
-  const subcategories = MOCK_CATEGORIES.filter(c => c.parent_id === blogCategory?.id);
+  const blogCategory = await getCategoryBySlug("blog")
+  const subcategories = blogCategory ? await getSubCategories(blogCategory.slug) : []
 
   return (
     <>
@@ -18,8 +19,8 @@ export default function BlogIndex() {
         </h1>
 
         <div className="space-y-16">
-          {subcategories.map((child) => {
-            const childPosts = MOCK_POSTS.filter(p => p.category_id === child.id);
+          {await Promise.all(subcategories.map(async (child) => {
+            const childPosts = await getPostsByCategory(child.slug);
             if (childPosts.length === 0) return null;
 
             return (
@@ -66,7 +67,7 @@ export default function BlogIndex() {
                 </div>
               </div>
             );
-          })}
+          }))}
         </div>
       </section>
 

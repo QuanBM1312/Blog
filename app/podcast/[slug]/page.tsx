@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
-import { MOCK_POSTS, MOCK_CATEGORIES } from "@/lib/mock-data"
+import { getPostBySlug } from "@/lib/services/post-service"
+import { getCategories } from "@/lib/services/category-service"
 import { StandardLayout } from "@/components/blog/StandardLayout"
 import { HerbLayout } from "@/components/blog/HerbLayout"
 import { StorytellingLayout } from "@/components/blog/StorytellingLayout"
@@ -17,14 +18,15 @@ export default async function PodcastPostPage({ params }: PodcastPostProps) {
   const { slug } = resolvedParams;
 
   // Tìm bài viết theo slug
-  const post = MOCK_POSTS.find((p) => p.slug === slug)
+  const post = await getPostBySlug(slug)
 
   if (!post) {
     return notFound()
   }
 
   // Tìm danh mục của bài viết
-  const category = MOCK_CATEGORIES.find((c) => c.id === post.category_id)
+  const categories = await getCategories()
+  const category = categories.find((c) => c.id === post.category_id)
 
   if (!category) {
     return notFound()
