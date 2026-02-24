@@ -148,7 +148,14 @@ export default function TestSupabasePage() {
           <div className="space-y-4">
             {posts.map(post => (
               <div key={post.id} className="p-4 border rounded shadow-sm bg-card hover:bg-accent/50 transition-colors">
-                <h3 className="text-lg font-bold">{post.title}</h3>
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className="text-lg font-bold">{post.title}</h3>
+                  <span className={`px-2 py-1 text-[10px] font-bold uppercase rounded ${
+                    post.status === 'published' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
+                  }`}>
+                    {post.status}
+                  </span>
+                </div>
                 <p className="text-xs text-muted-foreground mb-2">ID: {post.id} | Slug: {post.slug}</p>
                 <p className="line-clamp-2 text-sm">{post.excerpt}</p>
               </div>

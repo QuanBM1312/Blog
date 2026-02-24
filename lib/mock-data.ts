@@ -15,6 +15,7 @@ export interface Post {
   published_at: string;
   category_id: string;
   featured_image_url: string;
+  status: string;
   custom_fields?: Record<string, any>;
   author?: {
     name: string;
@@ -96,7 +97,7 @@ export const MOCK_POSTS: Post[] = [
     category_id: "cat-1-1",
     featured_image_url:
       "https://images.unsplash.com/photo-1514416432279-50fac261c1dd?q=80&w=2070&auto=format&fit=crop",
-    author: { name: "Đông Y Sư Hải Lĩnh" },
+    status: 'published',
   },
   {
     id: "post-2",
