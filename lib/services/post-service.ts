@@ -21,7 +21,7 @@ export async function getPostBySlug(slug: string): Promise<AppPost | null> {
   const { data, error } = await supabase
     .from('posts')
     .select('*, author:users(name)')
-    .eq('status', 'published')
+    .eq('slug', slug)
     .maybeSingle()
 
   if (error) {
@@ -69,8 +69,7 @@ function mapSupabasePostToAppPost(post: any): AppPost {
     content: post.content || '',
     published_at: post.published_at || post.created_at,
     category_id: post.category_id || '',
-    featured_image_url: post.image_url || '',
-    status: post.status || 'published',
+    featured_image_url: post.image_url || undefined,
     custom_fields: (post.custom_fields as Record<string, any>) || undefined,
     author: post.author ? { name: post.author.name } : undefined
   }
