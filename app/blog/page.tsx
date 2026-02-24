@@ -8,6 +8,7 @@ export default async function BlogIndex() {
   // Get subcategories of "Blog" category (cat-2)
   const blogCategory = await getCategoryBySlug("blog")
   const subcategories = blogCategory ? await getSubCategories(blogCategory.slug) : []
+  console.log("blogs", blogCategory)
 
   return (
     <>
