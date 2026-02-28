@@ -1,4 +1,5 @@
 import { Header } from "@/components/Header"
+export const dynamic = "force-dynamic"
 import { Footer } from "@/components/Footer"
 import { getPostsByCategory } from "@/lib/services/post-service"
 import { getCategoryBySlug, getSubCategories } from "@/lib/services/category-service"
