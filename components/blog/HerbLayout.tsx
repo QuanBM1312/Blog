@@ -18,10 +18,10 @@ export function HerbLayout({ post, category }: HerbLayoutProps) {
       <Breadcrumbs items={[{ label: category.name, href: '/tu-dien-thao-moc' }]} />
 
       {/* Top Section: Gallery & Info Box */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20 animate-in fade-in slide-in-from-bottom-5 duration-700">
-        {/* Gallery */}
-        <div className="space-y-4">
-          <div className="aspect-[4/5] overflow-hidden border border-border shadow-sm">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20 animate-in fade-in slide-in-from-bottom-5 duration-700 items-stretch">
+        {/* Gallery Box */}
+        <div className="bg-cream p-8 border border-primary/10 shadow-sm flex flex-col h-full">
+          <div className="flex-grow overflow-hidden border border-border shadow-sm mb-6 bg-white">
             <img 
               src={post.featured_image_url} 
               alt={post.title}
@@ -30,7 +30,7 @@ export function HerbLayout({ post, category }: HerbLayoutProps) {
           </div>
           <div className="grid grid-cols-4 gap-4">
             {gallery.slice(1).map((img: string, i: number) => (
-              <div key={i} className="aspect-square overflow-hidden border border-border">
+              <div key={i} className="aspect-square overflow-hidden border border-border bg-white">
                 <img src={img} alt={`${post.title}-${i}`} className="w-full h-full object-cover hover:scale-110 transition-transform" />
               </div>
             ))}
@@ -38,12 +38,12 @@ export function HerbLayout({ post, category }: HerbLayoutProps) {
         </div>
 
         {/* Info Box */}
-        <div className="bg-cream p-8 border border-primary/10 shadow-sm flex flex-col justify-center">
+        <div className="bg-cream p-8 border border-primary/10 shadow-sm flex flex-col justify-start">
           <h1 className="text-4xl font-playfair text-primary mb-6 border-b-2 border-accent/20 pb-4">
             {info.ten_vi_thuoc || post.title}
           </h1>
           
-          <div className="space-y-4 text-sm font-montserrat">
+          <div className="space-y-4 text-sm font-montserrat mb-12">
             {[
               { label: 'Tên tiếng Anh', value: info.ten_tieng_anh },
               { label: 'Tên Latinh', value: info.ten_latinh, italic: true },
@@ -63,14 +63,14 @@ export function HerbLayout({ post, category }: HerbLayoutProps) {
               </div>
             ))}
           </div>
-        </div>
-      </div>
 
-      {/* Content Section */}
-      <div className="max-w-4xl mx-auto space-y-12 mb-20">
-        <div id="post-content" className="prose prose-stone md:prose-xl max-w-none font-montserrat leading-loose text-foreground/80">
-          <h2 className="font-playfair text-3xl text-primary mb-8 text-center uppercase tracking-widest">Chi tiết & Giai thoại</h2>
-          <div dangerouslySetInnerHTML={{ __html: formatPostContent(post.content) }} />
+          {/* Content Section moved here */}
+          <div id="post-content" className="prose prose-stone max-w-none font-montserrat leading-loose text-foreground/80">
+            <h2 className="font-playfair text-2xl text-primary mb-6 uppercase tracking-widest border-b border-primary/10 pb-2">
+              Chi tiết & Giai thoại
+            </h2>
+            <div dangerouslySetInnerHTML={{ __html: formatPostContent(post.content) }} />
+          </div>
         </div>
       </div>
 
