@@ -34,6 +34,18 @@ export function StandardLayout({ post, category }: StandardLayoutProps) {
             dangerouslySetInnerHTML={{ __html: formatPostContent(post.content) }}
           />
 
+          {post.featured_image_url && (
+            <div className="mt-16 mb-12 animate-in fade-in slide-in-from-bottom-5 duration-700">
+              <div className="aspect-[16/9] w-full overflow-hidden border border-primary/10 shadow-sm bg-cream">
+                <img 
+                  src={post.featured_image_url} 
+                  alt={post.title} 
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+            </div>
+          )}
+
           <GlobalCTA />
           <RelatedPosts currentPostId={post.id} categoryId={post.category_id} />
         </div>
