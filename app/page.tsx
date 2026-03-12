@@ -103,16 +103,16 @@ export default function Home() {
       <Header />
       <main className="min-h-screen">
         <section id="banner" className="relative w-full bg-[#f2ede3] pt-[76px] xl:pt-[92px]">
-          <div className="w-full xl:max-w-7xl mx-auto h-[40vh] sm:h-[60vh] xl:h-[80vh] overflow-hidden flex items-center justify-center">
+          <div className="w-full h-[40vh] sm:h-[60vh] xl:h-[80vh] overflow-hidden flex items-center justify-center">
             <img
               src="/Hero-Section.jpg"
               alt="Hero Section"
-              className="w-full h-full object-cover md:object-contain object-top"
+              className="w-full h-full object-cover object-top"
             />
           </div>
         </section>
 
-        <section id="intro" className="relative max-xl:py-4 overflow-hidden min-h-[calc(100vh-76px)] xl:min-h-[calc(100vh-92px)] h-full flex items-center" style={{ backgroundColor: '#F2EDE3' }}>
+        <section id="intro" className="relative max-xl:py-12 py-20 overflow-hidden flex items-center" style={{ backgroundColor: '#F2EDE3' }}>
           {/* Background Image with Gradient Opacity */}
           <div
             className="absolute inset-0 z-0 pointer-events-none"
