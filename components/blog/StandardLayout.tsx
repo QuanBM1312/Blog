@@ -28,14 +28,8 @@ export function StandardLayout({ post, category }: StandardLayoutProps) {
             </div>
           </header>
 
-          <div 
-            id="post-content"
-            className="prose prose-stone lg:prose-xl max-w-none font-montserrat leading-loose text-foreground/80"
-            dangerouslySetInnerHTML={{ __html: formatPostContent(post.content) }}
-          />
-
           {post.featured_image_url && (
-            <div className="mt-16 mb-12 animate-in fade-in slide-in-from-bottom-5 duration-700">
+            <div className="mb-12 animate-in fade-in slide-in-from-bottom-5 duration-700">
               <div className="aspect-[16/9] w-full overflow-hidden border border-primary/10 shadow-sm bg-cream">
                 <img 
                   src={post.featured_image_url} 
@@ -45,6 +39,12 @@ export function StandardLayout({ post, category }: StandardLayoutProps) {
               </div>
             </div>
           )}
+
+          <div 
+            id="post-content"
+            className="prose prose-stone lg:prose-xl max-w-none font-montserrat leading-loose text-foreground/80"
+            dangerouslySetInnerHTML={{ __html: formatPostContent(post.content) }}
+          />
 
           <GlobalCTA />
           <RelatedPosts currentPostId={post.id} categoryId={post.category_id} />
