@@ -103,17 +103,17 @@ export default function Home() {
       <Header />
       <main className="min-h-screen">
         <section id="banner" className="relative w-full bg-[#f2ede3] pt-[76px] xl:pt-[92px]">
-          <div className="w-full h-[40vh] sm:h-[60vh] xl:h-[80vh] overflow-hidden flex items-center justify-center relative">
+          <div className="w-full h-[calc(100vh-76px)] xl:h-[calc(100vh-92px)] overflow-hidden flex items-center justify-center relative">
             <img
               src="/hero-banner-clean.jpg"
               alt="Hero Section"
-              className="w-full h-full object-cover object-top"
+              className="w-full h-full object-cover object-[75%_top] xl:object-center"
             />
 
             {/* Overlay Text */}
-            <div className="absolute inset-x-0 bottom-0 p-6 md:p-12 xl:p-20 flex flex-col justify-end h-full bg-gradient-to-t from-background/60 via-transparent to-transparent">
+            <div className="absolute inset-x-0 bottom-0 pb-8 pl-6 pr-6 md:pb-16 md:pl-16 xl:pb-24 xl:pl-20 flex flex-col justify-end h-full bg-gradient-to-t from-background/80 via-transparent to-transparent">
               <div className="max-w-7xl mx-auto w-full text-left">
-                <h2 className="font-dancing text-4xl sm:text-5xl md:text-6xl xl:text-7xl lg:leading-tight text-[#3b4733] font-bold drop-shadow-sm max-w-[800px] mb-2 md:mb-6">
+                <h2 className="font-dancing text-[36px] leading-[1.2] sm:text-5xl md:text-6xl xl:text-[80px] xl:leading-[1.15] text-[#3b4733] font-bold drop-shadow-md max-w-[800px] mb-0">
                   Trân trọng từng ngọn cỏ,
                   <br />
                   Giữ gìn một nền y
