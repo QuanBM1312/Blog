@@ -107,13 +107,13 @@ export default function Home() {
             <img
               src="/hero-banner-clean.jpg"
               alt="Hero Section"
-              className="w-full h-full object-cover object-[30%_top] xl:object-center"
+              className="w-full h-full object-cover object-[85%_center] xl:object-center"
             />
 
             {/* Overlay Text */}
-            <div className="absolute inset-x-0 bottom-0 pb-4 pl-6 pr-6 md:pb-8 md:pl-16 xl:pb-16 xl:pl-20 flex flex-col justify-end h-full bg-gradient-to-t from-background/80 via-transparent to-transparent">
+            <div className="absolute inset-x-0 bottom-0 pb-4 pl-4 pr-4 md:pb-8 md:pl-10 xl:pb-12 border-b-0 flex flex-col justify-end h-[50%] bg-gradient-to-t from-background/90 via-background/40 to-transparent">
               <div className="max-w-7xl mx-auto w-full text-left">
-                <h2 className="font-dancing text-[36px] leading-[1.2] sm:text-5xl md:text-6xl xl:text-[80px] xl:leading-[1.15] text-[#3b4733] font-bold drop-shadow-md max-w-[800px] mb-0">
+                <h2 className="font-dancing text-[36px] leading-[1.2] sm:text-5xl md:text-6xl xl:text-[80px] xl:leading-[1.15] text-[#3b4733] font-bold drop-shadow-md max-w-[800px] mb-2">
                   Trân trọng từng ngọn cỏ,
                   <br />
                   Giữ gìn một nền y
