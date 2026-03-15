@@ -104,11 +104,19 @@ export default function Home() {
       <main className="min-h-screen">
         <section id="banner" className="relative w-full bg-[#f2ede3] pt-[76px] xl:pt-[92px]">
           <div className="w-full h-[calc(100vh-76px)] xl:h-[calc(100vh-92px)] overflow-hidden flex items-center justify-center relative">
+            {/* Desktop Image */}
             <img
               src="/hero-banner-clean.jpg"
-              alt="Hero Section"
-              className="w-full h-full object-cover object-[85%_center] xl:object-center"
+              alt="Hero Section Desktop"
+              className="w-full h-full object-cover hidden md:block object-center"
             />
+            {/* Mobile Image */}
+            <img
+              src="/hero-banner-mobile.jpg"
+              alt="Hero Section Mobile"
+              className="w-full h-full object-cover block md:hidden object-center"
+            />
+
 
             {/* Overlay Text */}
             <div className="absolute inset-x-0 bottom-0 pb-4 pl-4 pr-4 md:pb-8 md:pl-10 xl:pb-12 border-b-0 flex flex-col justify-end h-[50%] bg-gradient-to-t from-background/90 via-background/40 to-transparent">
