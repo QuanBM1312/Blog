@@ -107,11 +107,11 @@ export default function Home() {
             <img
               src="/hero-banner-clean.jpg"
               alt="Hero Section"
-              className="w-full h-full object-cover object-[75%_top] xl:object-center"
+              className="w-full h-full object-cover object-[30%_top] xl:object-center"
             />
 
             {/* Overlay Text */}
-            <div className="absolute inset-x-0 bottom-0 pb-8 pl-6 pr-6 md:pb-16 md:pl-16 xl:pb-24 xl:pl-20 flex flex-col justify-end h-full bg-gradient-to-t from-background/80 via-transparent to-transparent">
+            <div className="absolute inset-x-0 bottom-0 pb-4 pl-6 pr-6 md:pb-8 md:pl-16 xl:pb-16 xl:pl-20 flex flex-col justify-end h-full bg-gradient-to-t from-background/80 via-transparent to-transparent">
               <div className="max-w-7xl mx-auto w-full text-left">
                 <h2 className="font-dancing text-[36px] leading-[1.2] sm:text-5xl md:text-6xl xl:text-[80px] xl:leading-[1.15] text-[#3b4733] font-bold drop-shadow-md max-w-[800px] mb-0">
                   Trân trọng từng ngọn cỏ,
