@@ -103,12 +103,23 @@ export default function Home() {
       <Header />
       <main className="min-h-screen">
         <section id="banner" className="relative w-full bg-[#f2ede3] pt-[76px] xl:pt-[92px]">
-          <div className="w-full h-[40vh] sm:h-[60vh] xl:h-[80vh] overflow-hidden flex items-center justify-center">
+          <div className="w-full h-[40vh] sm:h-[60vh] xl:h-[80vh] overflow-hidden flex items-center justify-center relative">
             <img
-              src="/Hero-Section.jpg"
+              src="/hero-banner-clean.jpg"
               alt="Hero Section"
               className="w-full h-full object-cover object-top"
             />
+
+            {/* Overlay Text */}
+            <div className="absolute inset-x-0 bottom-0 p-6 md:p-12 xl:p-20 flex flex-col justify-end h-full bg-gradient-to-t from-background/60 via-transparent to-transparent">
+              <div className="max-w-7xl mx-auto w-full text-left">
+                <h2 className="font-dancing text-4xl sm:text-5xl md:text-6xl xl:text-7xl lg:leading-tight text-[#3b4733] font-bold drop-shadow-sm max-w-[800px] mb-2 md:mb-6">
+                  Trân trọng từng ngọn cỏ,
+                  <br />
+                  Giữ gìn một nền y
+                </h2>
+              </div>
+            </div>
           </div>
         </section>
 
