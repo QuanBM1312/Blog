@@ -1,45 +1,72 @@
 /**
- * Chuyển đổi nội dung văn bản thô hoặc HTML có đánh số đầu dòng thành các Heading <h2>
+ * Chuyển đổi nội dung văn bản thô hoặc HTML có đánh số đầu dòng thành các Heading
  * phục vụ cho việc tạo Mục lục tự động.
+ * Hỗ trợ: numbered headings, markdown headings (#, ##), blockquotes, bullet points.
  */
 export function formatPostContent(content: string): string {
   if (!content) return "";
 
-  // 1. Tách nội dung thành từng dòng
-  // Chúng ta xử lý theo dòng để dễ nhận diện "Đầu đoạn"
   const lines = content.split(/\r?\n/);
-  
+
   const formattedLines = lines.map(line => {
     const trimmedLine = line.trim();
     if (!trimmedLine) return "";
-    
-    // REGEX nhận diện: Số + Dấu chấm + Khoảng trắng ở đầu dòng
-    // Nhóm 1: Con số (ví dụ 1 hoặc 1.1)
-    // Nhóm 3: Phần nội dung còn lại
-    const headingRegex = /^(\d+(\.\d+)*)\.\s+(.+)$/;
-    
-    // Trường hợp 1: Text thô có đánh số
-    const plainTextMatch = trimmedLine.match(headingRegex);
-    if (plainTextMatch) {
-      const id = slugify(`section-${plainTextMatch[1]}`);
-      return `<h2 id="${id}" class="font-playfair text-2xl text-primary mt-12 mb-6 scroll-mt-32 font-bold">${trimmedLine}</h2>`;
+
+    // Markdown heading: # → <h1>, ## → <h2>, ### → <h3>
+    const mdHeadingMatch = trimmedLine.match(/^(#{1,3})\s+(.+)$/);
+    if (mdHeadingMatch) {
+      const level = mdHeadingMatch[1].length;
+      const text = mdHeadingMatch[2];
+      const tag = `h${level}`;
+      const id = slugify(`section-${text}`);
+      const sizeClass = level === 1 ? 'text-3xl' : level === 2 ? 'text-2xl' : 'text-xl';
+      return `<${tag} id="${id}" class="font-playfair ${sizeClass} text-primary mt-12 mb-6 scroll-mt-32 font-bold">${text}</${tag}>`;
     }
 
-    // Trường hợp 2: Đã bọc trong thẻ <p> nhưng có đánh số bên trong
-    // Ví dụ: <p>1. Khởi nguồn</p>
+    // Numbered heading: "1." → <h2>, "1.1." → <h3>
+    const headingRegex = /^(\d+(\.\d+)*)\.\s+(.+)$/;
+
+    // Plain text with numbering
+    const plainTextMatch = trimmedLine.match(headingRegex);
+    if (plainTextMatch) {
+      const num = plainTextMatch[1];
+      const isSubHeading = num.includes('.');
+      const tag = isSubHeading ? 'h3' : 'h2';
+      const sizeClass = isSubHeading ? 'text-xl' : 'text-2xl';
+      const id = slugify(`section-${num}`);
+      return `<${tag} id="${id}" class="font-playfair ${sizeClass} text-primary mt-12 mb-6 scroll-mt-32 font-bold">${trimmedLine}</${tag}>`;
+    }
+
+    // HTML-wrapped numbered heading: <p>1. Text</p>
     const htmlRegex = /^<p>\s*(\d+(\.\d+)*)\.\s+(.*)<\/p>$/;
     const htmlMatch = trimmedLine.match(htmlRegex);
     if (htmlMatch) {
-      const id = slugify(`section-${htmlMatch[1]}`);
-      const text = `${htmlMatch[1]}. ${htmlMatch[3]}`;
-      return `<h2 id="${id}" class="font-playfair text-2xl text-primary mt-12 mb-6 scroll-mt-32 font-bold">${text}</h2>`;
+      const num = htmlMatch[1];
+      const isSubHeading = num.includes('.');
+      const tag = isSubHeading ? 'h3' : 'h2';
+      const sizeClass = isSubHeading ? 'text-xl' : 'text-2xl';
+      const id = slugify(`section-${num}`);
+      const text = `${num}. ${htmlMatch[3]}`;
+      return `<${tag} id="${id}" class="font-playfair ${sizeClass} text-primary mt-12 mb-6 scroll-mt-32 font-bold">${text}</${tag}>`;
     }
 
-    // Nếu là text thô (không có thẻ HTML bao quanh) thì bọc vào thẻ <p> để hiển thị đúng
+    // Blockquote: > text
+    if (trimmedLine.startsWith('> ')) {
+      const text = trimmedLine.slice(2);
+      return `<blockquote class="border-l-4 border-primary/30 pl-6 my-6 italic text-foreground/70">${text}</blockquote>`;
+    }
+
+    // Bullet point: - text
+    if (trimmedLine.startsWith('- ')) {
+      const text = trimmedLine.slice(2);
+      return `<li class="ml-6 mb-2 text-foreground/80 leading-loose list-disc">${text}</li>`;
+    }
+
+    // Plain text → wrap in <p>
     if (!trimmedLine.startsWith('<')) {
       return `<p class="mb-4 text-foreground/80 leading-loose">${trimmedLine}</p>`;
     }
-    
+
     return line;
   });
 

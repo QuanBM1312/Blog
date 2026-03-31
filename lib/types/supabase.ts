@@ -73,6 +73,8 @@ export interface Database {
           parent_id: string | null
           created_at: string
           template_type: string | null
+          description: string | null
+          image_url: string | null
         }
         Insert: {
           id?: string
@@ -81,6 +83,8 @@ export interface Database {
           parent_id?: string | null
           created_at?: string
           template_type?: string | null
+          description?: string | null
+          image_url?: string | null
         }
         Update: {
           id?: string
@@ -89,6 +93,8 @@ export interface Database {
           parent_id?: string | null
           created_at?: string
           template_type?: string | null
+          description?: string | null
+          image_url?: string | null
         }
       }
       tags: {

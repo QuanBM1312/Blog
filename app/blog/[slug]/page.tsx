@@ -36,26 +36,25 @@ export default async function BlogPostPage({ params }: BlogPostProps) {
   const categories = await getCategories()
   const category = categories.find((c) => c.id === post.category_id)
 
-  if (!category) {
-    return notFound()
-  }
+  const defaultCategory = { id: '', name: 'Bài viết', slug: 'blog', template_type: 'standard' as const }
+  const cat = category || defaultCategory
 
   // Hàm render layout tương ứng
   const renderLayout = () => {
-    switch (category.template_type) {
+    switch (cat.template_type) {
       case "herb_dictionary":
-        return <HerbLayout post={post} category={category} />
+        return <HerbLayout post={post} category={cat} />
       case "storytelling":
-        return <StorytellingLayout post={post} category={category} />
+        return <StorytellingLayout post={post} category={cat} />
       case "standard":
       default:
-        return <StandardLayout post={post} category={category} />
+        return <StandardLayout post={post} category={cat} />
     }
   }
 
   return (
     <main className="min-h-screen bg-background flex flex-col">
-      <SchemaMarkup post={post} category={category} />
+      <SchemaMarkup post={post} category={cat} />
       <Header />
       <div className="flex-grow">
         {renderLayout()}

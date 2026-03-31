@@ -2,7 +2,6 @@ import { notFound } from "next/navigation"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { getPostBySlug } from "@/lib/services/post-service"
-import { getCategories } from "@/lib/services/category-service"
 import { StandardLayout } from "@/components/blog/StandardLayout"
 import { HerbLayout } from "@/components/blog/HerbLayout"
 import { StorytellingLayout } from "@/components/blog/StorytellingLayout"
@@ -13,41 +12,37 @@ interface PodcastPostProps {
 }
 
 export default async function PodcastPostPage({ params }: PodcastPostProps) {
-  // Unwrapping params (Next.js 15+ requirement)
   const resolvedParams = await params;
   const { slug } = resolvedParams;
 
-  // Tìm bài viết theo slug
   const post = await getPostBySlug(slug)
 
   if (!post) {
     return notFound()
   }
 
-  // Tìm danh mục của bài viết
+  const { getCategories } = await import("@/lib/services/category-service")
   const categories = await getCategories()
   const category = categories.find((c) => c.id === post.category_id)
 
-  if (!category) {
-    return notFound()
-  }
+  const defaultCategory = { id: '', name: 'Podcast', slug: 'podcast', template_type: 'standard' as const }
+  const cat = category || defaultCategory
 
-  // Hàm render layout tương ứng
   const renderLayout = () => {
-    switch (category.template_type) {
+    switch (cat.template_type) {
       case "herb_dictionary":
-        return <HerbLayout post={post} category={category} />
+        return <HerbLayout post={post} category={cat} />
       case "storytelling":
-        return <StorytellingLayout post={post} category={category} />
+        return <StorytellingLayout post={post} category={cat} />
       case "standard":
       default:
-        return <StandardLayout post={post} category={category} />
+        return <StandardLayout post={post} category={cat} />
     }
   }
 
   return (
     <main className="min-h-screen bg-background flex flex-col">
-      <SchemaMarkup post={post} category={category} />
+      <SchemaMarkup post={post} category={cat} />
       <Header />
       <div className="flex-grow">
         {renderLayout()}

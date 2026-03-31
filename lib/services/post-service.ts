@@ -5,7 +5,7 @@ import { Post as AppPost } from '../mock-data'
 export async function getPosts(): Promise<AppPost[]> {
   const { data, error } = await supabase
     .from('posts')
-    .select('*, author:users(name)')
+    .select('*')
     .eq('status', 'published')
     .order('created_at', { ascending: false })
 
@@ -20,7 +20,7 @@ export async function getPosts(): Promise<AppPost[]> {
 export async function getPostBySlug(slug: string): Promise<AppPost | null> {
   const { data, error } = await supabase
     .from('posts')
-    .select('*, author:users(name)')
+    .select('*')
     .eq('slug', slug)
     .maybeSingle()
 
@@ -47,7 +47,7 @@ export async function getPostsByCategory(categorySlug: string): Promise<AppPost[
 
   const { data, error } = await supabase
     .from('posts')
-    .select('*, author:users(name)')
+    .select('*')
     .eq('category_id', (categoryData as any).id)
     .eq('status', 'published')
     .order('created_at', { ascending: false })
@@ -71,6 +71,6 @@ function mapSupabasePostToAppPost(post: any): AppPost {
     category_id: post.category_id || '',
     featured_image_url: post.image_url || undefined,
     custom_fields: (post.custom_fields as Record<string, any>) || undefined,
-    author: post.author ? { name: post.author.name } : undefined
+    author: { name: 'Hải Lĩnh Y Quán' }
   }
 }
