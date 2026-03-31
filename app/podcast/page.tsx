@@ -7,7 +7,7 @@ import Link from "next/link"
 
 export default async function PodcastPage() {
   // Get subcategories of "Y Lý – Y Học Cổ Truyền" category (cat-1)
-  const ylCategory = await getCategoryBySlug("y-ly-y-hoc-co-truyen")
+  const ylCategory = await getCategoryBySlug("hai-linh-podcast")
   const subcategories = ylCategory ? await getSubCategories(ylCategory.slug) : []
 
   return (

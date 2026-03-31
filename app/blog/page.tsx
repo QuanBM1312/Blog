@@ -7,7 +7,7 @@ import { getCategoryBySlug, getSubCategories } from "@/lib/services/category-ser
 
 export default async function BlogIndex() {
   // Get subcategories of "Blog" category (cat-2)
-  const blogCategory = await getCategoryBySlug("blog")
+  const blogCategory = await getCategoryBySlug("hai-linh-blog")
   const subcategories = blogCategory ? await getSubCategories(blogCategory.slug) : []
   console.log("blogs", blogCategory)
 
