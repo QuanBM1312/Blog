@@ -39,7 +39,7 @@ export function StorytellingLayout({ post, category }: StorytellingLayoutProps) 
 
         <div 
           id="post-content"
-          className="prose prose-stone prose-lg md:prose-2xl max-w-none font-montserrat leading-relaxed text-foreground/90 first-letter:text-6xl first-letter:font-playfair first-letter:mr-3 first-letter:float-left first-letter:text-primary"
+          className="prose prose-stone prose-lg md:prose-2xl max-w-none font-montserrat leading-relaxed text-foreground/90 first-letter:text-6xl first-letter:font-playfair first-letter:mr-3 first-letter:float-left first-letter:text-primary prose-img:w-full prose-img:h-auto"
           dangerouslySetInnerHTML={{ __html: formatPostContent(post.content) }}
         />
 

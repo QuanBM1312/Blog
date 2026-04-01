@@ -21,11 +21,11 @@ export function HerbLayout({ post, category }: HerbLayoutProps) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20 animate-in fade-in slide-in-from-bottom-5 duration-700 items-stretch">
         {/* Gallery Box */}
         <div className="bg-cream p-8 border border-primary/10 shadow-sm flex flex-col h-full">
-          <div className="flex-grow overflow-hidden border border-border shadow-sm mb-6 bg-white">
-            <img 
-              src={post.featured_image_url} 
+          <div className="overflow-hidden border border-border shadow-sm mb-6 bg-white">
+            <img
+              src={post.featured_image_url}
               alt={post.title}
-              className="w-full h-full object-cover"
+              className="w-full h-auto"
             />
           </div>
           <div className="grid grid-cols-4 gap-4">
@@ -65,7 +65,7 @@ export function HerbLayout({ post, category }: HerbLayoutProps) {
           </div>
 
           {/* Content Section moved here */}
-          <div id="post-content" className="prose prose-stone max-w-none font-montserrat leading-loose text-foreground/80">
+          <div id="post-content" className="prose prose-stone max-w-none font-montserrat leading-loose text-foreground/80 prose-img:w-full prose-img:h-auto">
             <h2 className="font-playfair text-2xl text-primary mb-6 uppercase tracking-widest border-b border-primary/10 pb-2">
               Chi tiết & Giai thoại
             </h2>

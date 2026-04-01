@@ -30,11 +30,11 @@ export function StandardLayout({ post, category }: StandardLayoutProps) {
 
           {post.featured_image_url && (
             <div className="mb-12 animate-in fade-in slide-in-from-bottom-5 duration-700">
-              <div className="aspect-[16/9] w-full overflow-hidden border border-primary/10 shadow-sm bg-cream">
-                <img 
-                  src={post.featured_image_url} 
-                  alt={post.title} 
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+              <div className="w-full overflow-hidden border border-primary/10 shadow-sm bg-cream">
+                <img
+                  src={post.featured_image_url}
+                  alt={post.title}
+                  className="w-full h-auto hover:scale-105 transition-transform duration-700"
                 />
               </div>
             </div>
@@ -42,7 +42,7 @@ export function StandardLayout({ post, category }: StandardLayoutProps) {
 
           <div 
             id="post-content"
-            className="prose prose-stone lg:prose-xl max-w-none font-montserrat leading-loose text-foreground/80"
+            className="prose prose-stone lg:prose-xl max-w-none font-montserrat leading-loose text-foreground/80 prose-img:w-full prose-img:h-auto"
             dangerouslySetInnerHTML={{ __html: formatPostContent(post.content) }}
           />
 
