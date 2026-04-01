@@ -7,15 +7,16 @@ import { formatPostContent } from '@/lib/services/content-processor';
 interface HerbLayoutProps {
   post: Post;
   category: Category;
+  basePath?: string;
 }
 
-export function HerbLayout({ post, category }: HerbLayoutProps) {
+export function HerbLayout({ post, category, basePath }: HerbLayoutProps) {
   const info = post.custom_fields?.quick_info || {};
   const gallery = post.custom_fields?.gallery || [];
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-24 pt-32">
-      <Breadcrumbs items={[{ label: category.name, href: '/tu-dien-thao-moc' }]} />
+      <Breadcrumbs items={[{ label: category.name, href: basePath }]} />
 
       {/* Top Section: Gallery & Info Box */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20 animate-in fade-in slide-in-from-bottom-5 duration-700 items-stretch">
@@ -75,7 +76,7 @@ export function HerbLayout({ post, category }: HerbLayoutProps) {
       </div>
 
       <GlobalCTA />
-      <RelatedPosts currentPostId={post.id} categoryId={post.category_id} />
+      <RelatedPosts currentPostId={post.id} categoryId={post.category_id} basePath={basePath} />
     </div>
   );
 }

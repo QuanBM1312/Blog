@@ -8,12 +8,13 @@ import { formatPostContent } from '@/lib/services/content-processor';
 interface StandardLayoutProps {
   post: Post;
   category: Category;
+  basePath?: string;
 }
 
-export function StandardLayout({ post, category }: StandardLayoutProps) {
+export function StandardLayout({ post, category, basePath }: StandardLayoutProps) {
   return (
     <div className="max-w-7xl mx-auto px-6 py-24 pt-32">
-      <Breadcrumbs items={[{ label: category.name }]} />
+      <Breadcrumbs items={[{ label: category.name, href: basePath }]} />
       
       <div className="flex flex-col lg:flex-row gap-12">
         {/* Main Content */}
@@ -47,7 +48,7 @@ export function StandardLayout({ post, category }: StandardLayoutProps) {
           />
 
           <GlobalCTA />
-          <RelatedPosts currentPostId={post.id} categoryId={post.category_id} />
+          <RelatedPosts currentPostId={post.id} categoryId={post.category_id} basePath={basePath} />
         </div>
 
         {/* Sidebar */}

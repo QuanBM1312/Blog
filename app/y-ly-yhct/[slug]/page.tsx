@@ -7,6 +7,8 @@ import { HerbLayout } from "@/components/blog/HerbLayout"
 import { StorytellingLayout } from "@/components/blog/StorytellingLayout"
 import { SchemaMarkup } from "@/components/blog/SchemaMarkup"
 
+export const dynamic = "force-dynamic"
+
 interface PodcastPostProps {
   params: Promise<{ slug: string }>
 }
@@ -31,12 +33,12 @@ export default async function PodcastPostPage({ params }: PodcastPostProps) {
   const renderLayout = () => {
     switch (cat.template_type) {
       case "herb_dictionary":
-        return <HerbLayout post={post} category={cat} />
+        return <HerbLayout post={post} category={cat} basePath="/y-ly-yhct" />
       case "storytelling":
-        return <StorytellingLayout post={post} category={cat} />
+        return <StorytellingLayout post={post} category={cat} basePath="/y-ly-yhct" />
       case "standard":
       default:
-        return <StandardLayout post={post} category={cat} />
+        return <StandardLayout post={post} category={cat} basePath="/y-ly-yhct" />
     }
   }
 

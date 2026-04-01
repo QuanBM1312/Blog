@@ -5,9 +5,10 @@ import { getCategories } from '@/lib/services/category-service';
 interface RelatedPostsProps {
   currentPostId: string;
   categoryId: string;
+  basePath?: string;
 }
 
-export async function RelatedPosts({ currentPostId, categoryId }: RelatedPostsProps) {
+export async function RelatedPosts({ currentPostId, categoryId, basePath = '/suc-khoe' }: RelatedPostsProps) {
   // We need the category slug to use getPostsByCategory
   const categories = await getCategories();
   const category = categories.find(c => c.id === categoryId);
@@ -28,7 +29,7 @@ export async function RelatedPosts({ currentPostId, categoryId }: RelatedPostsPr
       </h3>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {related.map((post) => (
-          <Link key={post.id} href={`/suc-khoe/${post.slug}`} className="group block">
+          <Link key={post.id} href={`${basePath}/${post.slug}`} className="group block">
             <div className="aspect-[4/3] overflow-hidden mb-4 border border-border">
               <img 
                 src={post.featured_image_url} 

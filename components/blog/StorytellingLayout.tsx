@@ -5,9 +5,10 @@ import { formatPostContent } from '@/lib/services/content-processor';
 interface StorytellingLayoutProps {
   post: any;
   category: any;
+  basePath?: string;
 }
 
-export function StorytellingLayout({ post, category }: StorytellingLayoutProps) {
+export function StorytellingLayout({ post, category, basePath }: StorytellingLayoutProps) {
   return (
     <article className="animate-in fade-in duration-1000">
       {/* Hero Image Section */}
@@ -59,7 +60,7 @@ export function StorytellingLayout({ post, category }: StorytellingLayoutProps) 
         `}} />
 
         <GlobalCTA />
-        <RelatedPosts currentPostId={post.id} categoryId={post.category_id} />
+        <RelatedPosts currentPostId={post.id} categoryId={post.category_id} basePath={basePath} />
       </div>
     </article>
   );
