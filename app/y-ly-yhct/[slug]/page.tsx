@@ -25,7 +25,7 @@ export default async function PodcastPostPage({ params }: PodcastPostProps) {
   const categories = await getCategories()
   const category = categories.find((c) => c.id === post.category_id)
 
-  const defaultCategory = { id: '', name: 'Podcast', slug: 'podcast', template_type: 'standard' as const }
+  const defaultCategory = { id: '', name: 'Y lý YHCT', slug: 'y-ly-yhct', template_type: 'standard' as const }
   const cat = category || defaultCategory
 
   const renderLayout = () => {

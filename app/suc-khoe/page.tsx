@@ -9,7 +9,11 @@ export default async function BlogIndex() {
   // Get subcategories of "Blog" category (cat-2)
   const blogCategory = await getCategoryBySlug("hai-linh-blog")
   const subcategories = blogCategory ? await getSubCategories(blogCategory.slug) : []
-  console.log("blogs", blogCategory)
+
+  // Fallback: if no subcategories, get posts directly from parent category
+  const directPosts = subcategories.length === 0
+    ? await getPostsByCategory('hai-linh-blog')
+    : []
 
   return (
     <>
@@ -35,15 +39,15 @@ export default async function BlogIndex() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {childPosts.map((post) => (
-                    <Link 
-                      key={post.id} 
-                      href={`/blog/${post.slug}`}
+                    <Link
+                      key={post.id}
+                      href={`/suc-khoe/${post.slug}`}
                       className="group border border-border bg-white hover:shadow-xl transition-all flex flex-col h-full overflow-hidden"
                     >
                       <div className="aspect-[16/10] overflow-hidden">
-                        <img 
-                          src={post.featured_image_url} 
-                          alt={post.title} 
+                        <img
+                          src={post.featured_image_url}
+                          alt={post.title}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                         />
                       </div>
@@ -51,15 +55,15 @@ export default async function BlogIndex() {
                         <span className="text-[10px] font-montserrat text-gray-400 mb-3">
                           {new Date(post.published_at).toLocaleDateString("vi-VN")}
                         </span>
-                        
+
                         <h4 className="text-xl font-playfair font-normal text-primary mb-3 group-hover:text-accent transition-colors line-clamp-2">
                           {post.title}
                         </h4>
-                        
+
                         <p className="text-gray-600 font-montserrat text-xs leading-relaxed mb-6 flex-grow line-clamp-3">
                           {post.excerpt}
                         </p>
-                        
+
                         <span className="text-[10px] font-montserrat font-bold tracking-[0.2em] text-primary uppercase border-b border-primary/20 w-fit pb-1 group-hover:border-accent group-hover:text-accent group-hover:border-accent/50 transition-all">
                           Đọc chi tiết
                         </span>
@@ -70,6 +74,41 @@ export default async function BlogIndex() {
               </div>
             );
           }))}
+
+          {/* Direct posts when no subcategories */}
+          {directPosts.length > 0 && (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {directPosts.map((post) => (
+                <Link
+                  key={post.id}
+                  href={`/suc-khoe/${post.slug}`}
+                  className="group border border-border bg-white hover:shadow-xl transition-all flex flex-col h-full overflow-hidden"
+                >
+                  <div className="aspect-[16/10] overflow-hidden">
+                    <img
+                      src={post.featured_image_url}
+                      alt={post.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                  </div>
+                  <div className="p-6 flex flex-col flex-grow">
+                    <span className="text-[10px] font-montserrat text-gray-400 mb-3">
+                      {new Date(post.published_at).toLocaleDateString("vi-VN")}
+                    </span>
+                    <h4 className="text-xl font-playfair font-normal text-primary mb-3 group-hover:text-accent transition-colors line-clamp-2">
+                      {post.title}
+                    </h4>
+                    <p className="text-gray-600 font-montserrat text-xs leading-relaxed mb-6 flex-grow line-clamp-3">
+                      {post.excerpt}
+                    </p>
+                    <span className="text-[10px] font-montserrat font-bold tracking-[0.2em] text-primary uppercase border-b border-primary/20 w-fit pb-1 group-hover:border-accent group-hover:text-accent group-hover:border-accent/50 transition-all">
+                      Đọc chi tiết
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

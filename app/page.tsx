@@ -131,7 +131,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="intro" className="relative max-xl:py-12 py-20 overflow-hidden flex items-center" style={{ backgroundColor: '#F2EDE3' }}>
+        <section id="intro" className="relative max-xl:py-12 py-20 overflow-hidden flex items-center bg-[#F2EDE3]">
           {/* Background Image with Gradient Opacity */}
           <div
             className="absolute inset-0 z-0 pointer-events-none"

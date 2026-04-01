@@ -36,7 +36,7 @@ export default async function BlogPostPage({ params }: BlogPostProps) {
   const categories = await getCategories()
   const category = categories.find((c) => c.id === post.category_id)
 
-  const defaultCategory = { id: '', name: 'Bài viết', slug: 'blog', template_type: 'standard' as const }
+  const defaultCategory = { id: '', name: 'Sức khỏe', slug: 'suc-khoe', template_type: 'standard' as const }
   const cat = category || defaultCategory
 
   // Hàm render layout tương ứng

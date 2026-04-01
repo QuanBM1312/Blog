@@ -7,8 +7,13 @@ import Link from "next/link"
 
 export default async function PodcastPage() {
   // Get subcategories of "Y Lý – Y Học Cổ Truyền" category (cat-1)
-  const ylCategory = await getCategoryBySlug("hai-linh-podcast")
+  const ylCategory = await getCategoryBySlug("hai-linh-y-quan")
   const subcategories = ylCategory ? await getSubCategories(ylCategory.slug) : []
+
+  // Fallback: if no subcategories, get posts directly from parent category
+  const directPosts = subcategories.length === 0
+    ? await getPostsByCategory('hai-linh-y-quan')
+    : []
 
   return (
     <>
@@ -34,15 +39,15 @@ export default async function PodcastPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {childPosts.map((post) => (
-                    <Link 
-                      key={post.id} 
-                      href={`/podcast/${post.slug}`}
+                    <Link
+                      key={post.id}
+                      href={`/y-ly-yhct/${post.slug}`}
                       className="group border border-border bg-white hover:shadow-xl transition-all flex flex-col h-full overflow-hidden"
                     >
                       <div className="aspect-[16/10] overflow-hidden">
-                        <img 
-                          src={post.featured_image_url} 
-                          alt={post.title} 
+                        <img
+                          src={post.featured_image_url}
+                          alt={post.title}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                         />
                       </div>
@@ -50,15 +55,15 @@ export default async function PodcastPage() {
                         <span className="text-[10px] font-montserrat text-gray-400 mb-3">
                           {new Date(post.published_at).toLocaleDateString("vi-VN")}
                         </span>
-                        
+
                         <h4 className="text-xl font-playfair font-normal text-primary mb-3 group-hover:text-accent transition-colors line-clamp-2">
                           {post.title}
                         </h4>
-                        
+
                         <p className="text-gray-600 font-montserrat text-xs leading-relaxed mb-6 flex-grow line-clamp-3">
                           {post.excerpt}
                         </p>
-                        
+
                         <span className="text-[10px] font-montserrat font-bold tracking-[0.2em] text-primary uppercase border-b border-primary/20 w-fit pb-1 group-hover:border-accent group-hover:text-accent group-hover:border-accent/50 transition-all">
                           Đọc chi tiết
                         </span>
@@ -69,6 +74,41 @@ export default async function PodcastPage() {
               </div>
             );
           }))}
+
+          {/* Direct posts when no subcategories */}
+          {directPosts.length > 0 && (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {directPosts.map((post) => (
+                <Link
+                  key={post.id}
+                  href={`/y-ly-yhct/${post.slug}`}
+                  className="group border border-border bg-white hover:shadow-xl transition-all flex flex-col h-full overflow-hidden"
+                >
+                  <div className="aspect-[16/10] overflow-hidden">
+                    <img
+                      src={post.featured_image_url}
+                      alt={post.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                  </div>
+                  <div className="p-6 flex flex-col flex-grow">
+                    <span className="text-[10px] font-montserrat text-gray-400 mb-3">
+                      {new Date(post.published_at).toLocaleDateString("vi-VN")}
+                    </span>
+                    <h4 className="text-xl font-playfair font-normal text-primary mb-3 group-hover:text-accent transition-colors line-clamp-2">
+                      {post.title}
+                    </h4>
+                    <p className="text-gray-600 font-montserrat text-xs leading-relaxed mb-6 flex-grow line-clamp-3">
+                      {post.excerpt}
+                    </p>
+                    <span className="text-[10px] font-montserrat font-bold tracking-[0.2em] text-primary uppercase border-b border-primary/20 w-fit pb-1 group-hover:border-accent group-hover:text-accent group-hover:border-accent/50 transition-all">
+                      Đọc chi tiết
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </section>
       <Footer />
