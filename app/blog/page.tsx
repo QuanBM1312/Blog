@@ -1,11 +1,11 @@
-import { Header } from "@/components/Header"
 export const dynamic = "force-dynamic"
+import Link from "next/link"
+import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { getBlogSections, getPostsByCategory } from "@/lib/services/post-service"
-import Link from "next/link"
 
-export default async function PodcastPage() {
-  const sections = await getBlogSections('hai-linh-y-quan')
+export default async function BlogIndex() {
+  const sections = await getBlogSections('hai-linh-blog')
 
   return (
     <>
@@ -13,7 +13,7 @@ export default async function PodcastPage() {
       <main className="min-h-screen bg-background">
         <section className="max-w-7xl mx-auto px-6 py-20 pt-32">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-playfair font-normal text-primary mb-20 uppercase tracking-[0.15em] sm:tracking-[0.2em] text-center border-b border-primary/10 pb-10 break-words px-2">
-            Y Lý Y Học Cổ Truyền
+            Chuyên Mục Sức Khỏe
           </h1>
 
           <div className="space-y-16">
@@ -56,7 +56,7 @@ export default async function PodcastPage() {
                                   <p className="mb-3">{post.excerpt}</p>
                                 )}
                                 <Link
-                                  href={`/y-ly-yhct/${post.slug}`}
+                                  href={`/blog/${post.slug}`}
                                   className="inline-flex items-center gap-2 text-accent hover:text-primary text-xs tracking-widest uppercase transition-colors font-bold"
                                 >
                                   Đọc chi tiết
@@ -89,7 +89,7 @@ export default async function PodcastPage() {
                       {posts.map((post) => (
                         <Link
                           key={post.id}
-                          href={`/y-ly-yhct/${post.slug}`}
+                          href={`/blog/${post.slug}`}
                           className="group border border-border bg-white hover:shadow-xl transition-all flex flex-col h-full overflow-hidden"
                         >
                           <div className="aspect-[16/10] overflow-hidden">

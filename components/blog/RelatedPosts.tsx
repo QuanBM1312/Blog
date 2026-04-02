@@ -8,7 +8,7 @@ interface RelatedPostsProps {
   basePath?: string;
 }
 
-export async function RelatedPosts({ currentPostId, categoryId, basePath = '/suc-khoe' }: RelatedPostsProps) {
+export async function RelatedPosts({ currentPostId, categoryId, basePath = '/blog' }: RelatedPostsProps) {
   // We need the category slug to use getPostsByCategory
   const categories = await getCategories();
   const category = categories.find(c => c.id === categoryId);

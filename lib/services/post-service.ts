@@ -74,3 +74,23 @@ function mapSupabasePostToAppPost(post: any): AppPost {
     author: { name: 'Hải Lĩnh Y Quán' }
   }
 }
+
+export async function getBlogSections(categorySlug: string) {
+  const { data, error } = await supabase
+    .from('blog_sections')
+    .select('*')
+    .eq('category_slug', categorySlug)
+    .order('display_order', { ascending: true });
+
+  if (error) {
+    console.error('Error fetching blog sections:', error);
+    return [];
+  }
+
+  return (data || []) as Array<{
+    id: string;
+    title: string;
+    post_category_slug: string | null;
+    post_format: string;
+  }>;
+}

@@ -10,8 +10,8 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const navLinks = [
-    { href: "/suc-khoe", label: "Sức khỏe" },
-    { href: "#footer", label: "Về chúng tôi" },
+    { href: "/blog", label: "Sức khỏe" },
+    { href: "/ve-chung-toi", label: "Về chúng tôi" },
     { href: "/shop", label: "Khóa học" },
     { href: "/y-ly-yhct", label: "Y lý y học cổ truyền" },
   ]

@@ -35,10 +35,35 @@ export function Footer() {
 
         {/* Columns 2 & 3: Support Info + Social (grouped on tablet, separate on desktop) */}
         <div className="space-y-8 md:col-span-1 lg:col-span-2 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
-          {/* Column 2: Support Info */}
+          {/* Column 2: Chuyên mục */}
           <div className="space-y-4">
             <h2 className="text-lg font-playfair font-normal tracking-widest uppercase border-b border-accent/20 pb-2 inline-block">
-              Thông Tin Hỗ Trợ
+              Chuyên Mục
+            </h2>
+            <div className="space-y-2 text-[13px] font-montserrat leading-relaxed text-primary-foreground/70">
+              <p className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 bg-accent rounded-full"></span>
+                <Link href="/blog" className="hover:text-accent transition-colors">Kiến thức Dưỡng sinh</Link>
+              </p>
+              <p className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 bg-accent rounded-full"></span>
+                <Link href="/y-ly-yhct" className="hover:text-accent transition-colors">Y Lý Y Học Cổ Truyền</Link>
+              </p>
+              <p className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 bg-accent rounded-full"></span>
+                <Link href="/ve-chung-toi" className="hover:text-accent transition-colors">Về chúng tôi</Link>
+              </p>
+              <p className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 bg-accent rounded-full"></span>
+                <Link href="/shop" className="hover:text-accent transition-colors">Khóa học</Link>
+              </p>
+            </div>
+          </div>
+
+          {/* Column 3: Hỗ trợ & Kết nối */}
+          <div className="space-y-4">
+            <h2 className="text-lg font-playfair font-normal tracking-widest uppercase border-b border-accent/20 pb-2 inline-block">
+              Hỗ Trợ & Kết Nối
             </h2>
             <div className="space-y-2 text-[13px] font-montserrat leading-relaxed text-primary-foreground/70">
               <p className="flex items-center gap-2">
@@ -49,28 +74,19 @@ export function Footer() {
                 <span className="w-1.5 h-1.5 bg-accent rounded-full"></span>
                 Tư vấn dưỡng sinh chuyên sâu
               </p>
-              <p className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-accent rounded-full"></span>
-                Chăm sóc khách hàng tận tâm
-              </p>
             </div>
-          </div>
-
-          {/* Column 3: Social & Connect */}
-          <div className="space-y-4">
-            <h2 className="text-lg font-playfair font-normal tracking-widest uppercase border-b border-accent/20 pb-2 inline-block">
-              Kết Nối Với Chúng Tôi
-            </h2>
-            <div className="flex gap-4">
-              <Link href="#" className="p-2 border border-primary-foreground/20 rounded-full flex items-center justify-center hover:bg-accent hover:border-accent hover:text-white transition-all duration-300">
-                <Facebook size={18} />
-              </Link>
-              <Link href="#" className="p-2 border border-primary-foreground/20 rounded-full flex items-center justify-center hover:bg-accent hover:border-accent hover:text-white transition-all duration-300">
-                <Instagram size={18} />
-              </Link>
-              <Link href="#" className="p-2 border border-primary-foreground/20 rounded-full flex items-center justify-center hover:bg-accent hover:border-accent hover:text-white transition-all duration-300">
-                <Youtube size={18} />
-              </Link>
+            <div className="pt-4">
+              <div className="flex gap-3">
+                <Link href="#" className="p-2 border border-primary-foreground/20 rounded-full flex items-center justify-center hover:bg-accent hover:border-accent hover:text-white transition-all duration-300">
+                  <Facebook size={18} />
+                </Link>
+                <Link href="#" className="p-2 border border-primary-foreground/20 rounded-full flex items-center justify-center hover:bg-accent hover:border-accent hover:text-white transition-all duration-300">
+                  <Instagram size={18} />
+                </Link>
+                <Link href="#" className="p-2 border border-primary-foreground/20 rounded-full flex items-center justify-center hover:bg-accent hover:border-accent hover:text-white transition-all duration-300">
+                  <Youtube size={18} />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
