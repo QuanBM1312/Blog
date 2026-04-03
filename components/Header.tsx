@@ -12,7 +12,7 @@ export function Header() {
   const navLinks = [
     { href: "/blog", label: "Blog" },
     { href: "/ve-chung-toi", label: "Về chúng tôi" },
-    { href: "/shop", label: "Khóa học" },
+    { href: "/triet-ly", label: "Triết lý" },
     { href: "/y-ly-yhct", label: "Y lý y học cổ truyền" },
   ]
 
