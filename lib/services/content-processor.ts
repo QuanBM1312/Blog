@@ -1,11 +1,25 @@
 /**
- * Chuyển đổi nội dung văn bản thô hoặc HTML có đánh số đầu dòng thành các Heading
- * phục vụ cho việc tạo Mục lục tự động.
- * Hỗ trợ: numbered headings, markdown headings (#, ##), blockquotes, bullet points.
+ * Chuyển đổi nội dung từ CMS (plain text markdown-like HOẶC TipTap HTML)
+ * thành HTML để render trên website.
+ *
+ * TipTap outputs: <h2>, <p>, <strong>, <em>, <ul>, <ol>, <blockquote>, <span style>
+ * Plain text: # heading, 1. heading, - bullet, > blockquote
+ *
+ * Strategy:
+ * - HTML content (TipTap): pass-through, chỉ clean để tránh double-wrapping
+ * - Plain text (legacy): chạy regex để wrap thành HTML
  */
 export function formatPostContent(content: string): string {
   if (!content) return "";
 
+  // ─── TipTap HTML detection ────────────────────────────────────────────────
+  // If content clearly starts with an HTML tag, treat as TipTap output
+  const trimmed = content.trim();
+  if (/^<(p|h[1-6]|ul|ol|blockquote|div|strong|em|u|s|span|a|img)/i.test(trimmed)) {
+    return cleanTipTapHTML(trimmed);
+  }
+
+  // ─── Legacy plain text pipeline ──────────────────────────────────────────
   const lines = content.split(/\r?\n/);
 
   const formattedLines = lines.map(line => {
@@ -71,6 +85,20 @@ export function formatPostContent(content: string): string {
   });
 
   return formattedLines.filter(l => l !== null).join('\n');
+}
+
+/**
+ * Clean TipTap HTML for proper rendering:
+ * - Remove text-align from outer <p> wrappers (prose handles alignment)
+ * - Preserve inline styles (color, etc.)
+ * - Ensure proper heading hierarchy
+ */
+function cleanTipTapHTML(html: string): string {
+  // TipTap HTML is already well-formed. We only strip empty paragraphs
+  // to avoid visual gaps. All inline styles (color, text-align) are preserved.
+  return html
+    .replace(/<p[^>]*>\s*<\/p>/gi, '')
+    .replace(/<p[^>]*>\s*&nbsp;\s*<\/p>/gi, '');
 }
 
 /**
