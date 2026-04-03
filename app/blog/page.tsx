@@ -4,8 +4,29 @@ import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { getBlogSections, getPostsByCategory } from "@/lib/services/post-service"
 
+interface SectionWithPosts {
+  id: string
+  title: string
+  post_category_slug: string | null
+  post_format: string
+  posts: Awaited<ReturnType<typeof getPostsByCategory>>
+}
+
 export default async function BlogIndex() {
   const sections = await getBlogSections('hai-linh-blog')
+
+  const sectionsWithPosts: SectionWithPosts[] = await Promise.all(
+    sections.map(async (section) => ({
+      ...section,
+      posts: section.post_category_slug
+        ? await getPostsByCategory(section.post_category_slug)
+        : [],
+    }))
+  )
+
+  const visibleSections = sectionsWithPosts.filter(
+    (s) => s.posts.length > 0 || s.post_format === 'qna'
+  )
 
   return (
     <>
@@ -17,12 +38,7 @@ export default async function BlogIndex() {
           </h1>
 
           <div className="space-y-16">
-            {sections.map(async (section) => {
-              if (!section.post_category_slug) return null;
-
-              const posts = await getPostsByCategory(section.post_category_slug);
-              if (posts.length === 0 && section.post_format !== 'qna') return null;
-
+            {visibleSections.map((section) => {
               if (section.post_format === 'qna') {
                 return (
                   <div key={section.id} className="space-y-8">
@@ -33,12 +49,12 @@ export default async function BlogIndex() {
                     </div>
 
                     <div className="border border-border">
-                      {posts.length === 0 ? (
+                      {section.posts.length === 0 ? (
                         <p className="text-gray-400 font-montserrat text-sm italic p-8 text-center">
                           Nội dung đang được cập nhật.
                         </p>
                       ) : (
-                        posts.map((post) => (
+                        section.posts.map((post) => (
                           <div key={post.id} className="border-b border-border last:border-b-0">
                             <details className="group">
                               <summary className="flex items-center justify-between cursor-pointer p-6 hover:bg-gray-50 transition-colors list-none">
@@ -80,13 +96,13 @@ export default async function BlogIndex() {
                     </h2>
                   </div>
 
-                  {posts.length === 0 ? (
+                  {section.posts.length === 0 ? (
                     <p className="text-gray-400 font-montserrat text-sm italic py-12 text-center border border-border">
                       Nội dung đang được cập nhật.
                     </p>
                   ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                      {posts.map((post) => (
+                      {section.posts.map((post) => (
                         <Link
                           key={post.id}
                           href={`/blog/${post.slug}`}
