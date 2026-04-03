@@ -23,30 +23,39 @@ export default function TrietLyPage() {
         </section>
 
         {/* ─── Content ─── */}
-        <section className="max-w-4xl mx-auto px-6 py-20 space-y-20">
+        <section className="max-w-5xl mx-auto px-6 py-20 space-y-20">
 
-          {/* Chapter 1: Lý tưởng */}
-          <div className="space-y-8">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-px bg-accent flex-shrink-0"></div>
-              <h2 className="font-playfair text-2xl md:text-3xl text-primary">
-                Lý Tưởng Của Hải Lĩnh
-              </h2>
+          {/* Chapter 1: Lý tưởng — with image */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-px bg-accent flex-shrink-0"></div>
+                <h2 className="font-playfair text-2xl md:text-3xl text-primary">
+                  Lý Tưởng Của Hải Lĩnh
+                </h2>
+              </div>
+              <div className="space-y-5 font-montserrat text-[14px] leading-[1.9] text-gray-700">
+                <p>
+                  Chúng tôi tin rằng, hiểu đúng về cơ thể là bước đầu tiên để sống khỏe. Mỗi lời khuyên hay liệu trình tại đây đều chứa đựng sự tận tâm, giúp bạn bồi bổ Thân - Tâm và tìm thấy sự thư thái mỗi ngày.
+                </p>
+                <p>
+                  Mỗi tách trà, mỗi bài thuốc, mỗi lời tư vấn đều xuất phát từ triết lý nhất quán: <em className="text-primary font-semibold">"Phòng bệnh hơn chữa bệnh, thuận tự nhiên là điều trị."</em>
+                </p>
+                <p>
+                  Hải Lĩnh Y Quán không chỉ chia sẻ kiến thức — mà còn đồng hành cùng bạn trên con đường dưỡng sinh, giúp bạn nhận ra rằng sức khỏe chân chính đến từ sự cân bằng giữa Thân - Tâm - Khí.
+                </p>
+              </div>
             </div>
-            <div className="space-y-5 font-montserrat text-[14px] leading-[1.9] text-gray-700">
-              <p>
-                Chúng tôi tin rằng, hiểu đúng về cơ thể là bước đầu tiên để sống khỏe. Mỗi lời khuyên hay liệu trình tại đây đều chứa đựng sự tận tâm, giúp bạn bồi bổ Thân - Tâm và tìm thấy sự thư thái mỗi ngày.
-              </p>
-              <p>
-                Mỗi tách trà, mỗi bài thuốc, mỗi lời tư vấn đều xuất phát từ triết lý nhất quán: <em className="text-primary font-semibold">"Phòng bệnh hơn chữa bệnh, thuận tự nhiên là điều trị."</em>
-              </p>
-              <p>
-                Hải Lĩnh Y Quán không chỉ chia sẻ kiến thức — mà còn đồng hành cùng bạn trên con đường dưỡng sinh, giúp bạn nhận ra rằng sức khỏe chân chính đến từ sự cân bằng giữa Thân - Tâm - Khí.
-              </p>
+            <div className="aspect-[4/5] overflow-hidden border border-border shadow-md">
+              <img
+                src="/generated/inspiration-forest.jpg"
+                alt="Tự nhiên và cây thuốc"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
 
-          {/* Chapter 2: Ba trụ cột */}
+          {/* Chapter 2: Ba trụ cột — with pillar images */}
           <div className="space-y-8">
             <div className="flex items-center gap-4">
               <div className="w-12 h-px bg-accent flex-shrink-0"></div>
@@ -55,50 +64,43 @@ export default function TrietLyPage() {
               </h2>
             </div>
 
-            <div className="space-y-0 border border-border">
-              {/* Pillar 1 */}
-              <div className="p-8 border-b border-border">
-                <div className="flex items-start gap-6">
-                  <div className="w-12 h-12 bg-primary/5 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-playfair text-xl text-primary">01</span>
-                  </div>
-                  <div className="space-y-3 flex-1">
-                    <h3 className="font-playfair text-xl text-primary italic">Dưỡng Sinh</h3>
-                    <p className="font-montserrat text-[13px] text-gray-600 leading-relaxed">
-                      Chúng tôi tin rằng phòng bệnh hơn chữa bệnh. Qua kiến thức Y học Cổ Truyền, chúng tôi hướng dẫn bạn cách sống thuận tự nhiên, cân bằng âm dương, và duy trì sức khỏe bền vững.
-                    </p>
-                  </div>
+            {/* Pillar 1 */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 border border-border">
+              <div className="p-8 space-y-4">
+                <div className="w-12 h-12 bg-primary/5 rounded-full flex items-center justify-center">
+                  <span className="font-playfair text-xl text-primary">01</span>
                 </div>
+                <div className="aspect-[4/3] overflow-hidden border border-border/50">
+                  <img src="/generated/inspiration-nature-bottle.jpg" alt="Dưỡng Sinh" className="w-full h-full object-cover" />
+                </div>
+                <h3 className="font-playfair text-lg text-primary italic">Dưỡng Sinh</h3>
+                <p className="font-montserrat text-[13px] text-gray-600 leading-relaxed">
+                  Chúng tôi tin rằng phòng bệnh hơn chữa bệnh. Qua kiến thức Y học Cổ Truyền, chúng tôi hướng dẫn bạn cách sống thuận tự nhiên, cân bằng âm dương, và duy trì sức khỏe bền vững.
+                </p>
               </div>
-
-              {/* Pillar 2 */}
-              <div className="p-8 border-b border-border">
-                <div className="flex items-start gap-6">
-                  <div className="w-12 h-12 bg-primary/5 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-playfair text-xl text-primary">02</span>
-                  </div>
-                  <div className="space-y-3 flex-1">
-                    <h3 className="font-playfair text-xl text-primary italic">Thảo Mộc</h3>
-                    <p className="font-montserrat text-[13px] text-gray-600 leading-relaxed">
-                      Tinh hoa từ cây cỏ thiên nhiên là nguyên liệu cốt lõi. Chúng tôi tuyển chọn và nghiên cứu các bài thuốc cổ truyền, kết hợp với tri thức Đông y để mang đến giải pháp an toàn, lành tính.
-                    </p>
-                  </div>
+              <div className="p-8 border-l-0 md:border-l border-border space-y-4">
+                <div className="w-12 h-12 bg-primary/5 rounded-full flex items-center justify-center">
+                  <span className="font-playfair text-xl text-primary">02</span>
                 </div>
+                <div className="aspect-[4/3] overflow-hidden border border-border/50">
+                  <img src="/generated/inspiration-bottle.jpg" alt="Thảo Mộc" className="w-full h-full object-cover" />
+                </div>
+                <h3 className="font-playfair text-lg text-primary italic">Thảo Mộc</h3>
+                <p className="font-montserrat text-[13px] text-gray-600 leading-relaxed">
+                  Tinh hoa từ cây cỏ thiên nhiên là nguyên liệu cốt lõi. Chúng tôi tuyển chọn và nghiên cứu các bài thuốc cổ truyền, kết hợp với tri thức Đông y để mang đến giải pháp an toàn, lành tính.
+                </p>
               </div>
-
-              {/* Pillar 3 */}
-              <div className="p-8">
-                <div className="flex items-start gap-6">
-                  <div className="w-12 h-12 bg-primary/5 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-playfair text-xl text-primary">03</span>
-                  </div>
-                  <div className="space-y-3 flex-1">
-                    <h3 className="font-playfair text-xl text-primary italic">Kết Nối</h3>
-                    <p className="font-montserrat text-[13px] text-gray-600 leading-relaxed">
-                      Hải Lĩnh Y Quán là nơi gặp gỡ của những người cùng chung niềm đam mê dưỡng sinh. Qua podcast "Bên ấm trà", các bài viết chuyên sâu, và cộng đồng thực hành, chúng tôi kết nối những tâm hồn yêu thiên nhiên.
-                    </p>
-                  </div>
+              <div className="p-8 border-l-0 md:border-l border-border space-y-4">
+                <div className="w-12 h-12 bg-primary/5 rounded-full flex items-center justify-center">
+                  <span className="font-playfair text-xl text-primary">03</span>
                 </div>
+                <div className="aspect-[4/3] overflow-hidden border border-border/50">
+                  <img src="/generated/inspiration-store.jpg" alt="Kết Nối" className="w-full h-full object-cover" />
+                </div>
+                <h3 className="font-playfair text-lg text-primary italic">Kết Nối</h3>
+                <p className="font-montserrat text-[13px] text-gray-600 leading-relaxed">
+                  Hải Lĩnh Y Quán là nơi gặp gỡ của những người cùng chung niềm đam mê dưỡng sinh. Qua podcast "Bên ấm trà", các bài viết chuyên sâu, và cộng đồng thực hành, chúng tôi kết nối những tâm hồn yêu thiên nhiên.
+                </p>
               </div>
             </div>
           </div>
